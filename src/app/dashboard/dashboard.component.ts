@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { CrewMember } from '../../crew-data';
+import { CrewListComponent } from '../components/crew-list/crew-list.component';
 
 @Component({
+  imports: [CrewListComponent],
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {
-  crewMembers: CrewMember[] = [];
-
-  constructor() {}
-}
+export class DashboardComponent {}
