@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, computed, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CrewMember } from '../../../crew';
@@ -7,7 +7,13 @@ import { CrewServiceService } from '../../crew-service.service';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  imports: [MatTableModule, MatTableModule, MatPaginatorModule, MatIcon],
+  imports: [
+    RouterOutlet,
+    MatTableModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIcon,
+  ],
   selector: 'component-crew-list',
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss',
@@ -50,7 +56,7 @@ export class CrewListComponent implements AfterViewInit {
   }
 
   editCrew(slug: string) {
-    this.router.navigate(['crew', slug, 'edit']);
+    this.router.navigate([{ outlets: { modal: ['crew', slug, 'edit'] } }]);
   }
 
   deleteCrew(slug: string) {
