@@ -1,26 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  computed,
-  signal,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, computed, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CrewMember } from '../../../crew';
 import { CrewServiceService } from '../../crew-service.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  imports: [MatTableModule, MatTableModule, MatPaginatorModule],
+  imports: [MatTableModule, MatTableModule, MatPaginatorModule, MatIcon],
   selector: 'component-crew-list',
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss',
 })
 export class CrewListComponent implements AfterViewInit {
   public dataSource = new MatTableDataSource<CrewMember>([]);
-
-  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
-
   public displayedColumns: string[] = [
     'first_name',
     'last_name',
@@ -30,7 +23,18 @@ export class CrewListComponent implements AfterViewInit {
     'daily_rate',
     'currency',
     'total_income',
+    'actions',
   ];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+
+  constructor(private crewService: CrewServiceService, private router: Router) {
+    this.crewService.crewMembers$.subscribe((data) => {
+      this.dataSource.data = [...data];
+    });
+    this.dataSource.paginator = this.paginator;
+  }
+
   //TODO change this computed value to pipe every possible currency
   public totalIncome = computed(() =>
     new Intl.NumberFormat('en-US', {
@@ -45,8 +49,15 @@ export class CrewListComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(private crewService: CrewServiceService) {
-    this.dataSource.data = this.crewService.crewMembers;
-    this.dataSource.paginator = this.paginator;
+  editCrew(slug: string) {
+    this.router.navigate(['crew', slug, 'edit']);
+  }
+
+  deleteCrew(slug: string) {
+    this.crewService.deleteCrew(slug);
+  }
+
+  goCrewDetail(slug: string) {
+    this.router.navigate(['crew', slug, 'detail']);
   }
 }
