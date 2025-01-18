@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
+import slugify from 'slugify';
 import { CrewServiceService } from '../../crew-service.service';
 import { CrewMember, CrewMemberTitle } from '../../../crew';
 
@@ -23,12 +24,11 @@ import { CrewMember, CrewMemberTitle } from '../../../crew';
     MatSelectModule,
     MatButtonModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   selector: 'app-crew-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
-  standalone: true
+  styleUrl: './edit.component.scss',
 })
 export class CrewEditComponent implements OnInit {
   crewForm: FormGroup;
@@ -68,6 +68,10 @@ export class CrewEditComponent implements OnInit {
       const updatedCrew: CrewMember = {
         ...this.crewMember,
         ...this.crewForm.value,
+        slug: slugify(
+          `${this.crewForm.value.first_name} ${this.crewForm.value.last_name}`,
+          { lower: true }
+        ),
         total_income:
           this.crewForm.value.days_on_board * this.crewForm.value.daily_rate,
       };

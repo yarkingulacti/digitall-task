@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import Swal from 'sweetalert2';
 import { CrewMember } from '../crew';
 import crewMembers from '../crew-data';
 
@@ -28,12 +29,26 @@ export class CrewServiceService {
   }
 
   editCrew(slug: string, updatedCrew: CrewMember) {
-    const updatedData = this.crewMembersSubject.value.map((crew) => {
-      if (crew.slug === slug) {
-        return updatedCrew;
-      }
-      return crew;
-    });
-    this.crewMembersSubject.next([...updatedData]);
+    if (
+      this.crewMembersSubject.value.find(
+        (crew) => crew.slug === updatedCrew.slug
+      )
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'A crew member with the same slug already exists.',
+        timerProgressBar: true,
+        timer: 3000,
+      });
+    } else {
+      const updatedData = this.crewMembersSubject.value.map((crew) => {
+        if (crew.slug === slug) {
+          return updatedCrew;
+        }
+        return crew;
+      });
+      this.crewMembersSubject.next([...updatedData]);
+    }
   }
 }
