@@ -88,6 +88,21 @@ export class CrewCertificateEditComponent implements OnInit {
 
   onSubmit() {
     if (this.certificateForm.valid) {
+      const currentCertificate = this.certificateService.getCertificate(
+        this.certificateId
+      );
+      if (!currentCertificate) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Certificate not found',
+          timerProgressBar: true,
+          timer: 3000,
+        });
+        this.closeModal();
+        return;
+      }
+
       const formValue = this.certificateForm.value;
       const updatedCertificate: CrewMemberCertificate = {
         id: this.certificateId,
@@ -95,6 +110,7 @@ export class CrewCertificateEditComponent implements OnInit {
         description: formValue.description,
         issue_date: formValue.issue_date,
         expiration_date: formValue.expiration_date,
+        type: currentCertificate?.type,
       };
 
       this.certificateService.editCertificate(
