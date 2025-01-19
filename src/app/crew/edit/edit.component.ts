@@ -14,8 +14,14 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
 import { CrewServiceService } from '../../crew-service.service';
-import { CrewMember, CrewMemberTitle } from '../../../crew';
+import {
+  CrewMember,
+  CrewMemberCertificate,
+  CrewMemberTitle,
+} from '../../../crew';
 import titles from '../../../title-data';
+import { CertificateService } from '../../certificate-service.service';
+
 @Component({
   imports: [
     ReactiveFormsModule,
@@ -28,17 +34,19 @@ import titles from '../../../title-data';
   ],
   selector: 'app-crew-edit',
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.scss',
+  styleUrls: ['./edit.component.scss'],
 })
 export class CrewEditComponent implements OnInit {
   crewForm: FormGroup;
   crewMember: CrewMember | undefined;
   titles: CrewMemberTitle[] = titles;
+  crewCertificates: CrewMemberCertificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
     private fb: FormBuilder,
     private crewService: CrewServiceService,
+    private crewCertificateService: CertificateService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -47,6 +55,7 @@ export class CrewEditComponent implements OnInit {
       last_name: ['', Validators.required],
       nationality: ['', Validators.required],
       title: ['', Validators.required],
+      certificate: [[], Validators.required],
       days_on_board: [0, [Validators.required, Validators.min(0)]],
       daily_rate: [0, [Validators.required, Validators.min(0)]],
       currency: ['USD', Validators.required],
@@ -54,26 +63,31 @@ export class CrewEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.crewCertificates = this.crewCertificateService.certificates;
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
       this.crewMember = this.crewService.getCrew(slug);
       if (this.crewMember) {
-        this.crewForm.patchValue(this.crewMember);
+        this.crewForm.patchValue({
+          ...this.crewMember,
+          certificate: this.crewMember.certificates,
+        });
       }
     }
   }
 
   onSubmit() {
     if (this.crewForm.valid && this.crewMember) {
+      const formValue = this.crewForm.value;
       const updatedCrew: CrewMember = {
         ...this.crewMember,
-        ...this.crewForm.value,
+        ...formValue,
+        certificates: formValue.certificate,
         slug: slugify(
-          `${this.crewForm.value.first_name} ${this.crewForm.value.last_name}`,
+          `${formValue.first_name} ${formValue.last_name}`,
           { lower: true }
         ),
-        total_income:
-          this.crewForm.value.days_on_board * this.crewForm.value.daily_rate,
+        total_income: formValue.days_on_board * formValue.daily_rate,
       };
       this.crewService.editCrew(this.crewMember.slug, updatedCrew);
       this.closeModal();

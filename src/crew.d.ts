@@ -1,4 +1,5 @@
 export interface CrewMember {
+  id: string;
   first_name: string;
   last_name: string;
   slug: string;

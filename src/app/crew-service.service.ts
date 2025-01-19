@@ -40,7 +40,7 @@ export class CrewServiceService {
   editCrew(slug: string, updatedCrew: CrewMember) {
     if (
       this.crewMembersSubject.value.find(
-        (crew) => crew.slug === updatedCrew.slug
+        (crew) => crew.slug === updatedCrew.slug && crew.id !== updatedCrew.id
       )
     ) {
       Swal.fire({
@@ -51,12 +51,9 @@ export class CrewServiceService {
         timer: 3000,
       });
     } else {
-      const updatedData = this.crewMembersSubject.value.map((crew) => {
-        if (crew.slug === slug) {
-          return updatedCrew;
-        }
-        return crew;
-      });
+      const updatedData = this.crewMembersSubject.value.map((crew) =>
+        crew.slug === slug ? updatedCrew : crew
+      );
       this.crewMembersSubject.next([...updatedData]);
     }
   }

@@ -2,6 +2,7 @@
 
 import { CrewMember } from './crew';
 import slugify from 'slugify';
+import { v4 as uuidv4 } from 'uuid';
 import titles from './title-data';
 import certificates from './certificate-data';
 
@@ -14,6 +15,7 @@ const getRandomItems = <T>(arr: T[], min: number = 1, max: number = 3): T[] => {
 
 const crewMembers: CrewMember[] = [
   {
+    id: uuidv4(),
     first_name: 'John',
     last_name: 'Smith',
     slug: slugify('John Smith', { lower: true }),
@@ -26,6 +28,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 2, 4),
   },
   {
+    id: uuidv4(),
     first_name: 'Maria',
     last_name: 'Garcia',
     slug: slugify('Maria Garcia', { lower: true }),
@@ -38,6 +41,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Yuki',
     last_name: 'Tanaka',
     slug: slugify('Yuki Tanaka', { lower: true }),
@@ -50,6 +54,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Andreas',
     last_name: 'Mueller',
     slug: slugify('Andreas Mueller', { lower: true }),
@@ -62,6 +67,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 2, 4),
   },
   {
+    id: uuidv4(),
     first_name: 'Elena',
     last_name: 'Popov',
     slug: slugify('Elena Popov', { lower: true }),
@@ -74,6 +80,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'James',
     last_name: 'Wilson',
     slug: slugify('James Wilson', { lower: true }),
@@ -86,6 +93,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Sophie',
     last_name: 'Laurent',
     slug: slugify('Sophie Laurent', { lower: true }),
@@ -98,6 +106,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Marco',
     last_name: 'Rossi',
     slug: slugify('Marco Rossi', { lower: true }),
@@ -110,6 +119,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Lars',
     last_name: 'Nielsen',
     slug: slugify('Lars Nielsen', { lower: true }),
@@ -122,6 +132,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Anna',
     last_name: 'Kowalski',
     slug: slugify('Anna Kowalski', { lower: true }),
@@ -134,6 +145,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Dimitri',
     last_name: 'Ivanov',
     slug: slugify('Dimitri Ivanov', { lower: true }),
@@ -146,6 +158,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Carlos',
     last_name: 'Santos',
     slug: slugify('Carlos Santos', { lower: true }),
@@ -158,6 +171,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Eva',
     last_name: 'Andersson',
     slug: slugify('Eva Andersson', { lower: true }),
@@ -170,6 +184,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Ali',
     last_name: 'Hassan',
     slug: slugify('Ali Hassan', { lower: true }),
@@ -182,6 +197,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Peter',
     last_name: 'van der Berg',
     slug: slugify('Peter van der Berg', { lower: true }),
@@ -194,6 +210,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 3),
   },
   {
+    id: uuidv4(),
     first_name: 'Liam',
     last_name: "O'Connor",
     slug: slugify("Liam O'Connor", { lower: true }),
@@ -206,6 +223,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Nina',
     last_name: 'Petrova',
     slug: slugify('Nina Petrova', { lower: true }),
@@ -218,6 +236,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Hans',
     last_name: 'Schmidt',
     slug: slugify('Hans Schmidt', { lower: true }),
@@ -230,6 +249,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Miguel',
     last_name: 'Rodriguez',
     slug: slugify('Miguel Rodriguez', { lower: true }),
@@ -242,6 +262,7 @@ const crewMembers: CrewMember[] = [
     certificates: getRandomItems(certificates, 1, 2),
   },
   {
+    id: uuidv4(),
     first_name: 'Alexis',
     last_name: 'Papadopoulos',
     slug: slugify('Alexis Papadopoulos', { lower: true }),

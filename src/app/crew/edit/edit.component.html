@@ -52,6 +52,21 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
+        <mat-label>Certificate</mat-label>
+        <mat-select formControlName="certificate" multiple>
+          <mat-option
+            *ngFor="let certificate of crewCertificates"
+            [value]="certificate"
+          >
+            {{ certificate.title }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="crewForm.get('certificate')?.hasError('required')">
+          Certificate is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
         <mat-label>Days on Board</mat-label>
         <input
           matInput

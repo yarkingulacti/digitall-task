@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -13,9 +13,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
+import { v4 as uuidv4 } from 'uuid';
 import { CrewServiceService } from '../../crew-service.service';
-import { CrewMember, CrewMemberTitle } from '../../../crew';
+import {
+  CrewMember,
+  CrewMemberCertificate,
+  CrewMemberTitle,
+} from '../../../crew';
 import titles from '../../../title-data';
+import { CertificateService } from '../../certificate-service.service';
 
 @Component({
   imports: [
@@ -31,14 +37,16 @@ import titles from '../../../title-data';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
 })
-export class CrewCreateComponent {
+export class CrewCreateComponent implements OnInit {
   crewForm: FormGroup;
   titles: CrewMemberTitle[] = titles;
+  crewCertificates: CrewMemberCertificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
     private fb: FormBuilder,
     private crewService: CrewServiceService,
+    private crewCertificateService: CertificateService,
     private router: Router
   ) {
     this.crewForm = this.fb.group({
@@ -46,10 +54,15 @@ export class CrewCreateComponent {
       last_name: ['', Validators.required],
       nationality: ['', Validators.required],
       title: ['', Validators.required],
+      certificate: [null, Validators.required],
       days_on_board: [0, [Validators.required, Validators.min(0)]],
       daily_rate: [0, [Validators.required, Validators.min(0)]],
       currency: ['USD', Validators.required],
     });
+  }
+
+  ngOnInit() {
+    this.crewCertificates = this.crewCertificateService.certificates;
   }
 
   onSubmit() {
@@ -57,6 +70,7 @@ export class CrewCreateComponent {
       const formValue = this.crewForm.value;
       const newCrew: CrewMember = {
         ...formValue,
+        id: uuidv4(),
         slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
           lower: true,
         }),
