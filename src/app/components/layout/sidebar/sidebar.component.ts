@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
+  imports: [RouterLink, RouterLinkActive, MatListModule],
   selector: 'layout-sidebar',
-  imports: [],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
