@@ -5,13 +5,14 @@ import { CrewCertificateDetailComponent } from './crew-certificate/detail/detail
 import { CrewCertificateComponent } from './crew-certificate/create/create.component';
 import { CrewEditComponent } from './crew/edit/edit.component';
 import { CrewCertificateListComponent } from './crew-certificate/list/list.component';
+import { CrewCreateComponent } from './crew/create/create.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: 'create', component: CrewDetailComponent, outlet: 'modal' },
+      { path: 'crew/create', component: CrewCreateComponent, outlet: 'modal' },
       {
         path: 'crew/:slug/edit',
         component: CrewEditComponent,
