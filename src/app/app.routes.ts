@@ -40,6 +40,7 @@ export const routes: Routes = [
       {
         path: ':id/edit',
         component: CrewCertificateEditComponent,
+        outlet: 'modal',
       },
     ],
   },
@@ -58,6 +59,7 @@ export const routes: Routes = [
       {
         path: ':id/edit',
         component: CertificateTypeEditComponent,
+        outlet: 'modal',
       },
     ],
   },
