@@ -35,6 +35,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -63,171 +64,104 @@ body {
   }
 }
 
-.modal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+// Cancel button
+button[mat-fab][extended]:not([color]) {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 
-  .modal-content {
-    background-color: #0e1d33;
-    border: 2px solid #ffffff;
-    border-radius: 8px;
-    padding: 1.5rem;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  mat-icon {
     color: #ffffff;
+  }
+}
 
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+// Submit button
+button[mat-fab][extended]:not([disabled]) {
+  background-color: #1976d2;
+  color: #ffffff;
 
-      .breadcrumb {
-        color: #ffffff;
-        opacity: 0.7;
-      }
+  &:hover {
+    background-color: #1565c0;
+  }
 
-      .close-button {
-        color: #ffffff;
-        opacity: 0.7;
-        transition: opacity 0.2s;
+  mat-icon {
+    color: #ffffff;
+  }
+}
 
-        &:hover {
-          opacity: 1;
-        }
-      }
+// Disabled button
+button[mat-fab][extended][disabled] {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+
+  mat-icon {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// Form field styles
+.mdc-text-field {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+
+  &--outlined {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.3) !important;
     }
+  }
 
-    // Form field styles
-    .mdc-text-field {
-      background-color: rgba(255, 255, 255, 0.05) !important;
+  &:hover .mdc-notched-outline__leading,
+  &:hover .mdc-notched-outline__notch,
+  &:hover .mdc-notched-outline__trailing {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+  }
 
-      &--outlined {
-        .mdc-notched-outline__leading,
-        .mdc-notched-outline__notch,
-        .mdc-notched-outline__trailing {
-          border-color: rgba(255, 255, 255, 0.3) !important;
-        }
-      }
+  &--focused .mdc-notched-outline__leading,
+  &--focused .mdc-notched-outline__notch,
+  &--focused .mdc-notched-outline__trailing {
+    border-color: #ffffff !important;
+  }
+}
 
-      &:hover .mdc-notched-outline__leading,
-      &:hover .mdc-notched-outline__notch,
-      &:hover .mdc-notched-outline__trailing {
-        border-color: rgba(255, 255, 255, 0.5) !important;
-      }
+// Input text color
+.mat-mdc-input-element,
+.mat-mdc-select-value-text,
+.mdc-floating-label,
+.mat-mdc-select-arrow,
+.mat-mdc-form-field-required-marker {
+  color: #ffffff !important;
+}
 
-      &--focused .mdc-notched-outline__leading,
-      &--focused .mdc-notched-outline__notch,
-      &--focused .mdc-notched-outline__trailing {
-        border-color: #ffffff !important;
-      }
-    }
+// Placeholder styles
+.mat-mdc-input-element {
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
 
-    // Input text color
-    .mat-mdc-input-element,
-    .mat-mdc-select-value-text,
-    .mdc-floating-label,
-    .mat-mdc-select-arrow,
-    .mat-mdc-form-field-required-marker {
-      color: #ffffff !important;
-    }
+  &::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
 
-    // Placeholder styles
-    .mat-mdc-input-element {
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.4) !important;
-      }
+  &::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+    opacity: 1;
+  }
 
-      &::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, 0.4) !important;
-      }
+  &:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+}
 
-      &::-moz-placeholder {
-        color: rgba(255, 255, 255, 0.4) !important;
-        opacity: 1;
-      }
+// Placeholder and label color
+.mdc-floating-label {
+  color: rgba(255, 255, 255, 0.6) !important;
 
-      &:-ms-input-placeholder {
-        color: rgba(255, 255, 255, 0.4) !important;
-      }
-    }
-
-    // Placeholder and label color
-    .mdc-floating-label {
-      color: rgba(255, 255, 255, 0.6) !important;
-
-      &--float-above {
-        color: rgba(255, 255, 255, 0.8) !important;
-      }
-    }
-
-    // Form actions
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 1rem;
-      margin-top: 1.5rem;
-
-      // Cancel button
-      button[mat-fab][extended]:not([color]) {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        mat-icon {
-          color: #ffffff;
-        }
-      }
-
-      // Submit button
-      button[mat-fab][extended]:not([disabled]) {
-        background-color: #1976d2;
-        color: #ffffff;
-
-        &:hover {
-          background-color: #1565c0;
-        }
-
-        mat-icon {
-          color: #ffffff;
-        }
-      }
-
-      // Disabled button
-      button[mat-fab][extended][disabled] {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.3);
-
-        mat-icon {
-          color: rgba(255, 255, 255, 0.3);
-        }
-      }
-    }
-
-    // Form spacing
-    form.flex.flex-col {
-      gap: 1rem;
-
-      mat-form-field {
-        width: 100%;
-      }
-    }
+  &--float-above {
+    color: rgba(255, 255, 255, 0.8) !important;
   }
 }
 
