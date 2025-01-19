@@ -17,15 +17,24 @@ export class CrewServiceService {
     return this.crewMembersSubject.value;
   }
 
-  deleteCrew(slug: string) {
-    const updatedData = this.crewMembersSubject.value.filter(
-      (crew) => crew.slug !== slug
-    );
-    this.crewMembersSubject.next([...updatedData]);
-  }
-
   getCrew(slug: string) {
     return this.crewMembersSubject.value.find((crew) => crew.slug === slug);
+  }
+
+  addCrew(newCrew: CrewMember) {
+    if (
+      this.crewMembersSubject.value.find((crew) => crew.slug === newCrew.slug)
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'A crew member with the same slug already exists.',
+        timerProgressBar: true,
+        timer: 3000,
+      });
+    } else {
+      this.crewMembersSubject.next([...this.crewMembersSubject.value, newCrew]);
+    }
   }
 
   editCrew(slug: string, updatedCrew: CrewMember) {
@@ -50,5 +59,12 @@ export class CrewServiceService {
       });
       this.crewMembersSubject.next([...updatedData]);
     }
+  }
+
+  deleteCrew(slug: string) {
+    const updatedData = this.crewMembersSubject.value.filter(
+      (crew) => crew.slug !== slug
+    );
+    this.crewMembersSubject.next([...updatedData]);
   }
 }
