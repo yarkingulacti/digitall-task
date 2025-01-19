@@ -1,17 +1,29 @@
 <div class="fixed inset-0 bg-black/75 flex items-center justify-center z-50">
-  <div class="bg-[#0e1d33] border border-white/10 rounded-lg w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto p-6">
-    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+  <div
+    class="bg-[#0e1d33] border border-white/10 rounded-lg w-[90%] max-w-2xl max-h-[90vh] overflow-y-auto p-6"
+  >
+    <div
+      class="flex items-center justify-between pb-4 border-b border-white/10"
+    >
       <div class="flex items-center gap-2">
         <span class="text-white text-opacity-60">Crew</span>
         <span class="text-white text-opacity-40 mx-2">></span>
         <span class="text-white text-opacity-60">Create Member</span>
       </div>
-      <button mat-icon-button class="text-white text-opacity-70 hover:text-opacity-100" (click)="closeModal()">
+      <button
+        mat-icon-button
+        class="text-white text-opacity-70 hover:text-opacity-100"
+        (click)="closeModal()"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </div>
 
-    <form [formGroup]="crewForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4 mt-6">
+    <form
+      [formGroup]="crewForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col gap-4 mt-6"
+    >
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>First Name</mat-label>
         <input
@@ -125,13 +137,23 @@
       </mat-form-field>
 
       <div class="flex justify-end items-center gap-4 mt-6">
-        <button mat-fab extended type="button" (click)="onCancel()" 
-          class="bg-white/10 text-white hover:bg-white/20">
+        <button
+          mat-fab
+          extended
+          type="button"
+          (click)="onCancel()"
+          class="bg-white/10 text-white hover:bg-white/20"
+        >
           <mat-icon>close</mat-icon>
           Cancel
         </button>
-        <button mat-fab extended type="submit" [disabled]="!crewForm.valid"
-          class="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-white/10 disabled:text-white/30">
+        <button
+          mat-fab
+          extended
+          type="submit"
+          [disabled]="!crewForm.valid"
+          class="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-white/10 disabled:text-white/30"
+        >
           <mat-icon>add</mat-icon>
           Create
         </button>
