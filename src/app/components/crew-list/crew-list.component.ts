@@ -5,6 +5,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CrewMember } from '../../../crew';
 import { CrewServiceService } from '../../crew-service.service';
 import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   imports: [
@@ -12,6 +13,7 @@ import { MatIcon } from '@angular/material/icon';
     MatTableModule,
     MatTableModule,
     MatPaginatorModule,
+    MatButtonModule,
     MatIcon,
   ],
   selector: 'component-crew-list',
@@ -53,6 +55,10 @@ export class CrewListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  addCrew() {
+    this.router.navigate([{ outlets: { modal: ['crew', 'create'] } }]);
   }
 
   editCrew(slug: string) {

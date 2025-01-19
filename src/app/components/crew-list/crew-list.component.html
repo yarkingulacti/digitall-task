@@ -1,3 +1,10 @@
+<div class="flex items-center justify-end mb-3" (click)="addCrew()">
+  <button mat-fab extended>
+    <mat-icon>add</mat-icon>
+    Add Crew Member
+  </button>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- First Name Column -->
   <ng-container matColumnDef="first_name">
