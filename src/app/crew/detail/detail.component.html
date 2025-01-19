@@ -1,0 +1,84 @@
+<div>
+  <h1 class="text-2xl text-white font-bold mb-4">
+    Crew Member
+    <strong>{{ crewMember?.first_name }} {{ crewMember?.last_name }}</strong>
+    Detail
+  </h1>
+  <mat-divider></mat-divider>
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <div class="flex flex-row space-x-4 mt-12">
+        <div class="flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">First Name</p>
+          <strong class="text-black">{{ crewMember?.first_name }}</strong>
+        </div>
+        <div class="flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">Last Name</p>
+          <strong class="text-black">{{ crewMember?.last_name }}</strong>
+        </div>
+        <div class="flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">Nationality</p>
+          <strong class="text-black">{{ crewMember?.nationality }}</strong>
+        </div>
+      </div>
+      <div class="flex flex-row space-x-4 mt-12">
+        <div class="flex flex-col flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">Title</p>
+          <strong class="text-black">{{ crewMember?.title?.name }}</strong>
+          <small>{{ crewMember?.title?.description }}</small>
+        </div>
+        <div class="flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">Days on Board</p>
+          <strong class="text-black"
+            >{{ crewMember?.days_on_board }} days</strong
+          >
+        </div>
+        <div class="flex flex-col flex-1 bg-white rounded-lg shadow-md p-4">
+          <p class="font-bold text-gray-600 text-xl">Daily Rate</p>
+          <strong class="text-black"
+            >{{ crewMember?.daily_rate | currency : crewMember?.currency }} per
+            day</strong
+          >
+          <strong class="text-black"
+            >Total Income is
+            {{
+              crewMember?.total_income | currency : crewMember?.currency
+            }}</strong
+          >
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Certificates">
+      <div class="grid grid-cols-1 gap-4 mt-12">
+        <div
+          *ngFor="let certificate of crewMember?.certificates"
+          class="bg-white rounded-lg shadow-md p-4"
+        >
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-bold text-gray-600 text-xl">
+                {{ certificate.title }}
+              </p>
+              <p class="text-gray-500">{{ certificate.description }}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-600">
+                Issue Date: {{ certificate.issue_date | date }}
+              </p>
+              <p
+                *ngIf="certificate.expiration_date"
+                class="text-sm"
+                [ngClass]="{
+                  'text-red-600': isExpired(certificate.expiration_date),
+                  'text-green-600': !isExpired(certificate.expiration_date)
+                }"
+              >
+                Expiration Date: {{ certificate.expiration_date | date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
