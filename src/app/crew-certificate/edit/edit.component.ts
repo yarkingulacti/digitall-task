@@ -16,6 +16,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CertificateService } from '../../certificate-service.service';
 import { CrewMemberCertificate } from '../../../crew';
 import Swal from 'sweetalert2';
+import {
+  CertificateType,
+  CertificateTypeService,
+} from '../../certificate-type-service.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   imports: [
@@ -23,6 +28,7 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     CommonModule,
     MatDialogModule,
     MatDatepickerModule,
@@ -35,16 +41,19 @@ import Swal from 'sweetalert2';
 export class CrewCertificateEditComponent implements OnInit {
   certificateForm: FormGroup;
   certificateId: string = '';
+  certificateTypes: CertificateType[] = [];
 
   constructor(
     private fb: FormBuilder,
     private certificateService: CertificateService,
+    private certificateTypeService: CertificateTypeService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.certificateForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
+      type: [null, Validators.required],
       issue_date: [null, Validators.required],
       expiration_date: [null],
     });
@@ -84,6 +93,19 @@ export class CrewCertificateEditComponent implements OnInit {
         this.closeModal();
       }
     });
+
+    this.certificateTypes = this.certificateTypeService.certificateTypesList;
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      const certificate = this.certificateService.getCertificate(id);
+
+      if (certificate) {
+        this.certificateForm.patchValue({
+          ...certificate,
+          type: certificate.type,
+        });
+      }
+    }
   }
 
   onSubmit() {
@@ -110,7 +132,7 @@ export class CrewCertificateEditComponent implements OnInit {
         description: formValue.description,
         issue_date: formValue.issue_date,
         expiration_date: formValue.expiration_date,
-        type: currentCertificate?.type,
+        type: formValue.type,
       };
 
       this.certificateService.editCertificate(
@@ -143,6 +165,6 @@ export class CrewCertificateEditComponent implements OnInit {
   }
 
   private closeModal() {
-    this.router.navigate(['/certificate/list', { outlets: { modal: null } }]);
+    this.router.navigate(['certificate', { outlets: { modal: null } }]);
   }
 }

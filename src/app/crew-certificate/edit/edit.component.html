@@ -14,9 +14,7 @@
           formControlName="title"
           placeholder="Enter certificate title"
         />
-        <mat-error
-          *ngIf="certificateForm.get('title')?.hasError('required')"
-        >
+        <mat-error *ngIf="certificateForm.get('title')?.hasError('required')">
           Title is required
         </mat-error>
       </mat-form-field>
@@ -33,6 +31,18 @@
           *ngIf="certificateForm.get('description')?.hasError('required')"
         >
           Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of certificateTypes" [value]="type">
+            {{ type.title }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="certificateForm.get('type')?.hasError('required')">
+          Type is required
         </mat-error>
       </mat-form-field>
 
@@ -72,18 +82,8 @@
       </mat-form-field>
 
       <div class="form-actions">
-        <button
-          mat-button
-          type="button"
-          (click)="onCancel()"
-        >
-          Cancel
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-        >
+        <button mat-button type="button" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">
           Save Changes
         </button>
       </div>
