@@ -22,9 +22,9 @@ export interface CrewMemberCertificate {
   id: string;
   title: string;
   description: string;
+  type: CertificateType;
   issue_date: Date;
   expiration_date?: Date;
-  type: CertificateType;
 }
 
 export interface CertificateType {
