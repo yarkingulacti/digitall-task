@@ -24,4 +24,11 @@ export interface CrewMemberCertificate {
   description: string;
   issue_date: Date;
   expiration_date?: Date;
+  type: CertificateType;
+}
+
+export interface CertificateType {
+  id: string;
+  title: string;
+  description: string;
 }
