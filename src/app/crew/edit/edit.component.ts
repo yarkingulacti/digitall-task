@@ -15,7 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
 import { CrewServiceService } from '../../crew-service.service';
 import { CrewMember, CrewMemberTitle } from '../../../crew';
-
+import titles from '../../../title-data';
 @Component({
   imports: [
     ReactiveFormsModule,
@@ -33,7 +33,7 @@ import { CrewMember, CrewMemberTitle } from '../../../crew';
 export class CrewEditComponent implements OnInit {
   crewForm: FormGroup;
   crewMember: CrewMember | undefined;
-  titles: CrewMemberTitle[] = [];
+  titles: CrewMemberTitle[] = titles;
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
