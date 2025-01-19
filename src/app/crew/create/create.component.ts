@@ -57,13 +57,12 @@ export class CrewCreateComponent {
       const formValue = this.crewForm.value;
       const newCrew: CrewMember = {
         ...formValue,
-        slug: slugify(
-          `${formValue.first_name} ${formValue.last_name}`,
-          { lower: true }
-        ),
+        slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
+          lower: true,
+        }),
         total_income: formValue.days_on_board * formValue.daily_rate,
       };
-      
+
       this.crewService.addCrew(newCrew);
       this.closeModal();
     }
