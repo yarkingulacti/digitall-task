@@ -1,4 +1,4 @@
-<aside class="mr-6 py-6">
+<aside class="mt-6 mr-6 py-6">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_2"
@@ -36,34 +36,35 @@
     </g>
   </svg>
   <mat-list>
-    <mat-list-item>
+    <mat-list-item class="mt-12">
       <a
-        class="text-white"
+        class="text-white hover:underline text-xl flex items-center gap-2"
         routerLink="/"
         routerLinkActive="underline"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
-        >Dashboard</a
+        ><mat-icon>home</mat-icon> Dashboard</a
       >
     </mat-list-item>
     <mat-list-item>
       <a
-        class="text-white"
+        class="text-white hover:underline text-xl flex items-center gap-2"
         routerLink="/certificate/list"
         routerLinkActive="underline"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
-        >Certificates</a
+      >
+        <mat-icon>redeem</mat-icon> Certificates</a
       >
     </mat-list-item>
     <mat-list-item>
       <a
-        class="text-white"
+        class="text-white hover:underline text-xl flex items-center gap-2"
         routerLink="/certificate-type/list"
         routerLinkActive="underline"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
-        >Certificate Types</a
+        ><mat-icon>format_list_numbered</mat-icon>Certificate Types</a
       >
     </mat-list-item>
   </mat-list>
