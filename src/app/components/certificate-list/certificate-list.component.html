@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="flex items-center justify-end mb-3">
+    <button mat-fab extended (click)="onAddClick()">
+      <mat-icon>add</mat-icon>
+      Add Certificate
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource">
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let certificate">{{ certificate.title }}</td>
+    </ng-container>
+
+    <!-- Issue Date Column -->
+    <ng-container matColumnDef="issue_date">
+      <th mat-header-cell *matHeaderCellDef>Issue Date</th>
+      <td mat-cell *matCellDef="let certificate">
+        {{ certificate.issue_date | date }}
+      </td>
+    </ng-container>
+
+    <!-- Expiry Date Column -->
+    <ng-container matColumnDef="expiration_date">
+      <th mat-header-cell *matHeaderCellDef>Expiry Date</th>
+      <td mat-cell *matCellDef="let certificate">
+        {{ certificate.expiration_date | date }}
+      </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let certificate">
+        {{ certificate.description }}
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let certificate">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="onEditClick(certificate.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="onDeleteClick(certificate.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of certificates"
+  >
+  </mat-paginator>
+</div>
