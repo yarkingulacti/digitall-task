@@ -71,6 +71,7 @@ export class CrewCreateComponent implements OnInit {
       const newCrew: CrewMember = {
         ...formValue,
         id: uuidv4(),
+        certificates: formValue.certificate,
         slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
           lower: true,
         }),
