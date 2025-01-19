@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CertificateType } from '../../../crew';
 import { certificateTypes } from '../../../certificate-types-data';
 import Swal from 'sweetalert2';
+import { CertificateTypeService } from '../../certificate-type-service.service';
 
 @Component({
   imports: [
@@ -26,8 +27,13 @@ export class CertificateTypeListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private router: Router) {
-    this.dataSource.data = certificateTypes;
+  constructor(
+    private router: Router,
+    private certificateTypeService: CertificateTypeService
+  ) {
+    this.certificateTypeService.certificateTypes$.subscribe((data) => {
+      this.dataSource.data = [...data];
+    });
   }
 
   ngAfterViewInit() {
@@ -36,11 +42,23 @@ export class CertificateTypeListComponent implements AfterViewInit {
     }
   }
 
-  editCertificateType(certificateType: CertificateType) {
-    this.router.navigate(['/certificate-type', certificateType.id, 'edit']);
+  onAddClick() {
+    this.router.navigate([
+      'certificate-type',
+      { outlets: { modal: ['create'] } },
+    ]);
   }
 
-  deleteCertificateType(certificateType: CertificateType) {
+  editCertificateType(certificateType: CertificateType) {
+    this.router.navigate([
+      'certificate-type',
+      {
+        outlets: { modal: [certificateType.id, 'edit'] },
+      },
+    ]);
+  }
+
+  deleteCertificateType(id: string) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -51,7 +69,7 @@ export class CertificateTypeListComponent implements AfterViewInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Implement delete functionality
+        this.certificateTypeService.deleteCertificateType(id);
         Swal.fire('Deleted!', 'Certificate type has been deleted.', 'success');
       }
     });
