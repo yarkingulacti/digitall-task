@@ -10,6 +10,7 @@ import { CertificateTypeCreateComponent } from './certificate-type/create/create
 import { CertificateTypeEditComponent } from './certificate-type/edit/edit.component';
 import { CertificateTypeListComponent } from './certificate-type/list/list.component';
 import { CrewCertificateEditComponent } from './crew-certificate/edit/edit.component';
+import { CrewCertificatesComponent } from './crew/certificates/certificates.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,11 @@ export const routes: Routes = [
       {
         path: 'crew/:slug/edit',
         component: CrewEditComponent,
+        outlet: 'modal',
+      },
+      {
+        path: 'crew/:slug/certificates',
+        component: CrewCertificatesComponent,
         outlet: 'modal',
       },
     ],
