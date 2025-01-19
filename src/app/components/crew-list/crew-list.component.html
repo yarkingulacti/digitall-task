@@ -5,37 +5,49 @@
   </button>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table
+  id="crew-table"
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 bg-[#0e1d33!important]"
+  style="border: 2px solid #ffffff !important; border-bottom: none !important"
+>
   <!-- First Name Column -->
   <ng-container matColumnDef="first_name">
-    <th mat-header-cell *matHeaderCellDef>First Name</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.first_name }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">First Name</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ crew.first_name }}
+    </td>
   </ng-container>
 
   <!-- Last Name Column -->
   <ng-container matColumnDef="last_name">
-    <th mat-header-cell *matHeaderCellDef>Last Name</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.last_name }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Last Name</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ crew.last_name }}
+    </td>
   </ng-container>
 
   <!-- Nationality Column -->
   <ng-container matColumnDef="nationality">
-    <th mat-header-cell *matHeaderCellDef>Nationality</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.nationality }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Nationality</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ crew.nationality }}
+    </td>
   </ng-container>
 
   <!-- Title Column -->
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell *matCellDef="let crew">
+    <th mat-header-cell *matHeaderCellDef class="text-white">Title</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
       {{ crew.title.name }} - {{ crew.title.description }}
     </td>
   </ng-container>
 
   <!-- Certificate Column -->
   <ng-container matColumnDef="certificates">
-    <th mat-header-cell *matHeaderCellDef>Certificate</th>
-    <td mat-cell *matCellDef="let crew">
+    <th mat-header-cell *matHeaderCellDef class="text-white">Certificate</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
       <a
         [routerLink]="[
           '/',
@@ -44,9 +56,7 @@
         class="underline"
       >
         Has
-        <span class="text-blue-800 font-semibold">{{
-          crew.certificates.length
-        }}</span>
+        <span class="font-semibold">{{ crew.certificates.length }}</span>
         certificates
       </a>
     </td>
@@ -54,50 +64,65 @@
 
   <!-- Days on Board Column -->
   <ng-container matColumnDef="days_on_board">
-    <th mat-header-cell *matHeaderCellDef>Days on Board</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.days_on_board }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Days on Board</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ crew.days_on_board }} days
+    </td>
   </ng-container>
 
   <!-- Daily Rate Column -->
   <ng-container matColumnDef="daily_rate">
-    <th mat-header-cell *matHeaderCellDef>Daily Rate</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.daily_rate }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Daily Rate</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ formatCurrency(crew.daily_rate, crew.currency) }}
+    </td>
   </ng-container>
 
   <!-- Currency Column -->
   <ng-container matColumnDef="currency">
-    <th mat-header-cell *matHeaderCellDef>Currency</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.currency }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Currency</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ crew.currency }}
+    </td>
   </ng-container>
 
   <!-- Total Income Column -->
   <ng-container matColumnDef="total_income">
-    <th mat-header-cell *matHeaderCellDef>Total Income</th>
-    <td mat-cell *matCellDef="let crew">{{ crew.total_income }}</td>
+    <th mat-header-cell *matHeaderCellDef class="text-white">Total Income</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
+      {{ formatCurrency(crew.total_income, crew.currency) }}
+    </td>
     <td mat-footer-cell *matFooterCellDef>Total Income: {{ totalIncome() }}</td>
   </ng-container>
 
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell *matCellDef="let crew">
+    <th mat-header-cell *matHeaderCellDef class="text-white">Actions</th>
+    <td mat-cell *matCellDef="let crew" class="text-white">
       <button mat-icon-button (click)="goCrewDetail(crew.slug)">
-        <mat-icon>visibility</mat-icon>
+        <mat-icon class="text-white">visibility</mat-icon>
       </button>
       <button mat-icon-button (click)="editCrew(crew.slug)">
-        <mat-icon>edit</mat-icon>
+        <mat-icon class="text-white">edit</mat-icon>
       </button>
       <button mat-icon-button (click)="deleteCrew(crew.slug)">
-        <mat-icon>delete</mat-icon>
+        <mat-icon class="text-white">delete</mat-icon>
       </button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  <tr mat-footer-row *matFooterRowDef="['total_income']"></tr>
+  <tr
+    mat-footer-row
+    *matFooterRowDef="['total_income']"
+    class="text-[#ffffff!important] bg-[#0e1d33!important]"
+  ></tr>
 </table>
 <mat-paginator
+  id="crew-table-paginator"
+  class="text-[#ffffff!important] bg-[#0e1d33!important]"
+  style="border: 2px solid #ffffff !important; border-top: none !important"
   [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons
   aria-label="Select page of periodic elements"
