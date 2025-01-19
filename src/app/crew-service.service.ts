@@ -21,6 +21,10 @@ export class CrewServiceService {
     return this.crewMembersSubject.value.find((crew) => crew.slug === slug);
   }
 
+  getCrewMemberBySlug(slug: string) {
+    return this.crewMembersSubject.value.find((crew) => crew.slug === slug);
+  }
+
   addCrew(newCrew: CrewMember) {
     if (
       this.crewMembersSubject.value.find((crew) => crew.slug === newCrew.slug)
