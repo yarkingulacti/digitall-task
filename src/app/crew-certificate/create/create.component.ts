@@ -16,6 +16,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CertificateService } from '../../certificate-service.service';
 import { CrewMemberCertificate } from '../../../crew';
 import Swal from 'sweetalert2';
+import {
+  CertificateType,
+  CertificateTypeService,
+} from '../../certificate-type-service.service';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   imports: [
@@ -23,6 +28,7 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     CommonModule,
     MatDialogModule,
     MatDatepickerModule,
@@ -34,18 +40,22 @@ import Swal from 'sweetalert2';
 })
 export class CrewCertificateCreateComponent {
   certificateForm: FormGroup;
+  certificateTypes: CertificateType[] = [];
 
   constructor(
     private fb: FormBuilder,
     private certificateService: CertificateService,
+    private certificateTypeService: CertificateTypeService,
     private router: Router
   ) {
     this.certificateForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
+      type: [null, Validators.required],
       issue_date: [null, Validators.required],
       expiration_date: [null],
     });
+    this.certificateTypes = this.certificateTypeService.certificateTypesList;
   }
 
   onSubmit() {
@@ -53,6 +63,7 @@ export class CrewCertificateCreateComponent {
       const formValue = this.certificateForm.value;
       const certificate: CrewMemberCertificate = {
         id: crypto.randomUUID(),
+        type: formValue.type,
         ...formValue,
       };
 
