@@ -25,9 +25,10 @@ export class CertificateListComponent implements AfterViewInit {
   public dataSource = new MatTableDataSource<CrewMemberCertificate>([]);
   public displayedColumns: string[] = [
     'title',
+    'description',
+    'type',
     'issue_date',
     'expiration_date',
-    'description',
     'actions',
   ];
 
@@ -40,7 +41,6 @@ export class CertificateListComponent implements AfterViewInit {
     this.certificateService.certificates$.subscribe((data) => {
       this.dataSource.data = [...data];
     });
-    this.dataSource.paginator = this.paginator;
   }
 
   ngAfterViewInit() {
@@ -52,7 +52,7 @@ export class CertificateListComponent implements AfterViewInit {
   }
 
   onEditClick(id: string) {
-    this.router.navigate(['certificate', id, 'edit']);
+    this.router.navigate(['certificate', { outlets: { modal: [id, 'edit'] } }]);
   }
 
   onDeleteClick(id: string) {
