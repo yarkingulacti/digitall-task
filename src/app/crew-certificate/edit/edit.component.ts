@@ -21,6 +21,7 @@ import {
   CertificateTypeService,
 } from '../../certificate-type-service.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   imports: [
@@ -29,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatIconModule,
     CommonModule,
     MatDialogModule,
     MatDatepickerModule,
@@ -164,7 +166,7 @@ export class CrewCertificateEditComponent implements OnInit {
     this.closeModal();
   }
 
-  private closeModal() {
+  public closeModal() {
     this.router.navigate(['certificate', { outlets: { modal: null } }]);
   }
 }

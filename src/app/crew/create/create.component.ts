@@ -22,6 +22,7 @@ import {
 } from '../../../crew';
 import titles from '../../../title-data';
 import { CertificateService } from '../../certificate-service.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   imports: [
@@ -30,6 +31,7 @@ import { CertificateService } from '../../certificate-service.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     CommonModule,
     MatDialogModule,
   ],
@@ -87,7 +89,7 @@ export class CrewCreateComponent implements OnInit {
     this.closeModal();
   }
 
-  private closeModal() {
+  public closeModal() {
     this.router.navigate([{ outlets: { modal: null } }]);
   }
 }

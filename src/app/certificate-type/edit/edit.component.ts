@@ -16,6 +16,7 @@ import {
   CertificateType,
 } from '../../certificate-type-service.service';
 import Swal from 'sweetalert2';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
@@ -24,6 +25,7 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     CommonModule,
     MatDialogModule,
   ],
@@ -93,7 +95,7 @@ export class CertificateTypeEditComponent implements OnInit {
     this.closeModal();
   }
 
-  private closeModal() {
+  public closeModal() {
     this.router.navigate(['certificate-type', { outlets: { modal: null } }]);
   }
 }

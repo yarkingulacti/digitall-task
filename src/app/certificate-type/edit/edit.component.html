@@ -1,10 +1,23 @@
-<div class="modal-overlay">
-  <div class="modal-container">
+<div class="modal-container">
+  <div class="modal-content">
     <div class="modal-header">
-      <h2>Edit Certificate Type</h2>
+      <div class="breadcrumb">
+        <span>Certificate Types</span>
+        <span class="mx-2">></span>
+        <span>Edit Type</span>
+      </div>
+      <button
+        mat-icon-button
+        class="close-button"
+        (click)="closeModal()"
+        class="flex flex-col"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <form [formGroup]="typeForm" (ngSubmit)="onSubmit()" class="modal-content">
-      <mat-form-field appearance="fill" class="w-full">
+
+    <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-full">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" required />
         <mat-error *ngIf="typeForm.get('title')?.hasError('required')">
@@ -12,7 +25,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="w-full">
+      <mat-form-field appearance="outline" class="w-full">
         <mat-label>Description</mat-label>
         <textarea
           matInput
@@ -25,20 +38,14 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="modal-actions">
-        <button
-          mat-button
-          type="button"
-          (click)="onCancel()"
-        >
+      <div class="form-actions">
+        <button mat-fab extended type="button" (click)="onCancel()">
+          <mat-icon>close</mat-icon>
           Cancel
         </button>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-        >
-          Save Changes
+        <button mat-fab extended type="submit" [disabled]="!typeForm.valid">
+          <mat-icon>save</mat-icon>
+          Save
         </button>
       </div>
     </form>

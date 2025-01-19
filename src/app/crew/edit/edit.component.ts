@@ -21,6 +21,7 @@ import {
 } from '../../../crew';
 import titles from '../../../title-data';
 import { CertificateService } from '../../certificate-service.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   imports: [
@@ -29,6 +30,7 @@ import { CertificateService } from '../../certificate-service.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     CommonModule,
     MatDialogModule,
   ],
@@ -83,10 +85,9 @@ export class CrewEditComponent implements OnInit {
         ...this.crewMember,
         ...formValue,
         certificates: formValue.certificate,
-        slug: slugify(
-          `${formValue.first_name} ${formValue.last_name}`,
-          { lower: true }
-        ),
+        slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
+          lower: true,
+        }),
         total_income: formValue.days_on_board * formValue.daily_rate,
       };
       this.crewService.editCrew(this.crewMember.slug, updatedCrew);
@@ -98,7 +99,7 @@ export class CrewEditComponent implements OnInit {
     this.closeModal();
   }
 
-  private closeModal() {
+  public closeModal() {
     this.router.navigate([{ outlets: { modal: null } }]);
   }
 }

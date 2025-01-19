@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CertificateTypeService } from '../../certificate-type-service.service';
 import { CertificateType } from '../../../crew';
 import Swal from 'sweetalert2';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   imports: [
@@ -21,6 +22,7 @@ import Swal from 'sweetalert2';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     CommonModule,
     MatDialogModule,
   ],
@@ -72,6 +74,10 @@ export class CertificateTypeCreateComponent {
     } else {
       this.typeForm.markAllAsTouched();
     }
+  }
+
+  onCancel() {
+    this.closeModal();
   }
 
   closeModal() {

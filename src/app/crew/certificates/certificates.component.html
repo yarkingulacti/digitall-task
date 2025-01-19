@@ -1,15 +1,20 @@
-<div class="modal-overlay">
-  <div class="certificate-modal mat-elevation-z8">
+<div class="modal-container">
+  <div class="modal-content">
     <div class="modal-header">
-      <h2>
-        {{ crewMember?.first_name }} {{ crewMember?.last_name }}'s Certificates
-      </h2>
-      <button mat-button (click)="closeModal()">
-        <mat-icon class="m-0">close</mat-icon>
+      <div class="breadcrumb">
+        <span>Crew</span>
+        <span class="mx-2">></span>
+        <span>Certificates</span>
+      </div>
+      <button mat-icon-button class="close-button" (click)="closeModal()">
+        <mat-icon>close</mat-icon>
       </button>
     </div>
 
     <div class="modal-content">
+      <h2>
+        {{ crewMember?.first_name }} {{ crewMember?.last_name }}'s Certificates
+      </h2>
       <table mat-table [dataSource]="dataSource" class="w-full">
         <!-- Title Column -->
         <ng-container matColumnDef="title">
