@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, computed, ViewChild } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { CrewMember } from '../../../crew';
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   imports: [
+    RouterLink,
     RouterOutlet,
     MatTableModule,
     MatTableModule,
@@ -28,6 +29,7 @@ export class CrewListComponent implements AfterViewInit {
     'last_name',
     'nationality',
     'title',
+    'certificates',
     'days_on_board',
     'daily_rate',
     'currency',

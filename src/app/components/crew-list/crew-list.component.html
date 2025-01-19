@@ -32,6 +32,26 @@
     </td>
   </ng-container>
 
+  <!-- Certificate Column -->
+  <ng-container matColumnDef="certificates">
+    <th mat-header-cell *matHeaderCellDef>Certificate</th>
+    <td mat-cell *matCellDef="let crew">
+      <a
+        [routerLink]="[
+          '/',
+          { outlets: { modal: ['crew', crew.slug, 'certificates'] } }
+        ]"
+        class="underline"
+      >
+        Has
+        <span class="text-blue-800 font-semibold">{{
+          crew.certificates.length
+        }}</span>
+        certificates
+      </a>
+    </td>
+  </ng-container>
+
   <!-- Days on Board Column -->
   <ng-container matColumnDef="days_on_board">
     <th mat-header-cell *matHeaderCellDef>Days on Board</th>
