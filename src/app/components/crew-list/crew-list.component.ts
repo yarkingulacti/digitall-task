@@ -45,6 +45,14 @@ export class CrewListComponent implements AfterViewInit {
     });
   }
 
+  public formatCurrency(value: number, currency: 'USD' | 'EUR' | 'GBP') {
+    return new Intl.NumberFormat('tr-TR', {
+      style: 'currency',
+      currency,
+      maximumFractionDigits: 0,
+    }).format(value);
+  }
+
   //TODO change this computed value to pipe every possible currency
   public totalIncome = computed(() =>
     new Intl.NumberFormat('en-US', {
