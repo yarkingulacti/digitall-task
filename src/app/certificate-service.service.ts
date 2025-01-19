@@ -48,7 +48,6 @@ export class CertificateService {
     id: string,
     updatedCertificate: CrewMemberCertificate
   ): boolean {
-    // Check if another certificate (not the current one) has the same title
     const duplicateTitle = this.certificatesSubject.value.find(
       (cert) =>
         cert.id !== id &&
@@ -67,7 +66,7 @@ export class CertificateService {
     }
 
     const updatedCertificates = this.certificatesSubject.value.map((cert) =>
-      cert.id === id ? { ...updatedCertificate } : cert
+      cert.id === id ? updatedCertificate : cert
     );
 
     this.certificatesSubject.next([...updatedCertificates]);
