@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+  <div class="edit-certificate-container mat-elevation-z8">
+    <h2>Add Certificate Type</h2>
+
+    <form
+      [formGroup]="typeForm"
+      (ngSubmit)="onSubmit()"
+      class="certificate-form"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Enter certificate type title"
+        />
+        <mat-error *ngIf="typeForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter certificate type description"
+          rows="3"
+        ></textarea>
+        <mat-error *ngIf="typeForm.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-button type="button" (click)="closeModal()">Cancel</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!typeForm.valid"
+        >
+          Create Certificate Type
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
