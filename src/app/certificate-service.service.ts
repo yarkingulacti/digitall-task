@@ -44,12 +44,18 @@ export class CertificateService {
     }
   }
 
-  editCertificate(id: string, updatedCertificate: CrewMemberCertificate) {
-    if (
-      this.certificatesSubject.value.find(
-        (cert) => cert.title !== updatedCertificate.title
-      )
-    ) {
+  editCertificate(
+    id: string,
+    updatedCertificate: CrewMemberCertificate
+  ): boolean {
+    // Check if another certificate (not the current one) has the same title
+    const duplicateTitle = this.certificatesSubject.value.find(
+      (cert) =>
+        cert.id !== id &&
+        cert.title.toLowerCase() === updatedCertificate.title.toLowerCase()
+    );
+
+    if (duplicateTitle) {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -57,12 +63,15 @@ export class CertificateService {
         timerProgressBar: true,
         timer: 3000,
       });
-    } else {
-      const updatedCertificates = this.certificatesSubject.value.map((cert) =>
-        cert.id === id ? updatedCertificate : cert
-      );
-      this.certificatesSubject.next(updatedCertificates);
+      return false;
     }
+
+    const updatedCertificates = this.certificatesSubject.value.map((cert) =>
+      cert.id === id ? { ...updatedCertificate } : cert
+    );
+
+    this.certificatesSubject.next([...updatedCertificates]);
+    return true;
   }
 
   deleteCertificate(id: string) {

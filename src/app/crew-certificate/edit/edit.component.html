@@ -1,0 +1,92 @@
+<div class="modal-overlay">
+  <div class="edit-certificate-container mat-elevation-z8">
+    <h2>Edit Certificate</h2>
+
+    <form
+      [formGroup]="certificateForm"
+      (ngSubmit)="onSubmit()"
+      class="certificate-form"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          placeholder="Enter certificate title"
+        />
+        <mat-error
+          *ngIf="certificateForm.get('title')?.hasError('required')"
+        >
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Enter certificate description"
+          rows="3"
+        ></textarea>
+        <mat-error
+          *ngIf="certificateForm.get('description')?.hasError('required')"
+        >
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Issue Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="issueDatePicker"
+          formControlName="issue_date"
+          placeholder="Choose issue date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="issueDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #issueDatePicker></mat-datepicker>
+        <mat-error
+          *ngIf="certificateForm.get('issue_date')?.hasError('required')"
+        >
+          Issue date is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Expiration Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="expirationDatePicker"
+          formControlName="expiration_date"
+          placeholder="Choose expiration date (optional)"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="expirationDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #expirationDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button
+          mat-button
+          type="button"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
