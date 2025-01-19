@@ -1,0 +1,111 @@
+<div class="modal-overlay">
+  <div class="edit-crew-container mat-elevation-z8">
+    <h2>Create Crew Member</h2>
+
+    <form [formGroup]="crewForm" (ngSubmit)="onSubmit()" class="crew-form">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          formControlName="first_name"
+          placeholder="Enter first name"
+        />
+        <mat-error *ngIf="crewForm.get('first_name')?.hasError('required')">
+          First name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          formControlName="last_name"
+          placeholder="Enter last name"
+        />
+        <mat-error *ngIf="crewForm.get('last_name')?.hasError('required')">
+          Last name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nationality</mat-label>
+        <input
+          matInput
+          formControlName="nationality"
+          placeholder="Enter nationality"
+        />
+        <mat-error *ngIf="crewForm.get('nationality')?.hasError('required')">
+          Nationality is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option *ngFor="let title of titles" [value]="title">
+            {{ title.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="crewForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Days on Board</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="days_on_board"
+          placeholder="Enter days on board"
+        />
+        <mat-error *ngIf="crewForm.get('days_on_board')?.hasError('required')">
+          Days on board is required
+        </mat-error>
+        <mat-error *ngIf="crewForm.get('days_on_board')?.hasError('min')">
+          Days on board must be 0 or greater
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Daily Rate</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="daily_rate"
+          placeholder="Enter daily rate"
+        />
+        <mat-error *ngIf="crewForm.get('daily_rate')?.hasError('required')">
+          Daily rate is required
+        </mat-error>
+        <mat-error *ngIf="crewForm.get('daily_rate')?.hasError('min')">
+          Daily rate must be 0 or greater
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Currency</mat-label>
+        <mat-select formControlName="currency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">
+            {{ currency }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="crewForm.get('currency')?.hasError('required')">
+          Currency is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-button type="button" (click)="onCancel()">Cancel</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!crewForm.valid"
+        >
+          Create Crew Member
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
