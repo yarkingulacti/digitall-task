@@ -41,7 +41,6 @@ export class CrewListComponent implements AfterViewInit {
     this.crewService.crewMembers$.subscribe((data) => {
       this.dataSource.data = [...data];
     });
-    this.dataSource.paginator = this.paginator;
   }
 
   //TODO change this computed value to pipe every possible currency
@@ -77,6 +76,7 @@ export class CrewListComponent implements AfterViewInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
+        Swal.fire('Deleted!', 'Crew member has been deleted.', 'success');
         this.deleteCrewConfirm(slug);
       }
     });
