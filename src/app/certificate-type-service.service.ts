@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { certificateTypes } from '../certificate-types-data';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface CertificateType {
   id: string;
@@ -15,9 +17,11 @@ export class CertificateTypeService {
   private certificateTypesSubject = new BehaviorSubject<CertificateType[]>([]);
   public certificateTypes$ = this.certificateTypesSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+    this.certificateTypesSubject.next([...certificateTypes]);
+  }
 
-  get certificateTypes() {
+  get certificateTypesList() {
     return this.certificateTypesSubject.value;
   }
 
@@ -25,10 +29,11 @@ export class CertificateTypeService {
     return this.certificateTypesSubject.value.find((type) => type.id === id);
   }
 
-  addCertificateType(newType: CertificateType) {
+  createCertificateType(type: Omit<CertificateType, 'id'>): boolean {
     if (
       this.certificateTypesSubject.value.find(
-        (type) => type.title.toLowerCase() === newType.title.toLowerCase()
+        (existingType) =>
+          existingType.title.toLowerCase() === type.title.toLowerCase()
       )
     ) {
       Swal.fire({
@@ -39,19 +44,23 @@ export class CertificateTypeService {
         timer: 3000,
       });
       return false;
-    } else {
-      this.certificateTypesSubject.next([
-        ...this.certificateTypesSubject.value,
-        newType,
-      ]);
-      return true;
     }
+
+    const newType: CertificateType = {
+      ...type,
+      id: uuidv4(),
+    };
+
+    const updatedTypes = [...this.certificateTypesSubject.value, newType];
+    this.certificateTypesSubject.next(updatedTypes);
+
+    return true;
   }
 
   editCertificateType(id: string, updatedType: CertificateType) {
     const existingType = this.certificateTypesSubject.value.find(
-      (type) => 
-        type.id !== id && 
+      (type) =>
+        type.id !== id &&
         type.title.toLowerCase() === updatedType.title.toLowerCase()
     );
 
