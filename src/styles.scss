@@ -12,3 +12,32 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Fix for Material form field notched outline border
+.mat-mdc-form-field {
+  .mdc-notched-outline__notch {
+    border-right: none;
+  }
+}
+
+#crew-table-paginator,
+#certificate-table-paginator,
+#certificate-type-table-paginator {
+  & mat-select {
+    color: #ffffff !important;
+  }
+
+  & .mat-mdc-paginator-icon {
+    fill: #ffffff !important;
+  }
+
+  & .mat-mdc-icon-button[aria-disabled="true"] .mat-mdc-paginator-icon {
+    fill: #929292 !important;
+  }
+}
+
+app-crew-create {
+  & .mdc-floating-label {
+    border-right: none !important;
+  }
+}
