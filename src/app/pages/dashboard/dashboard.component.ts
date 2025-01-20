@@ -1,4 +1,4 @@
-import { OnInit, Component, ViewChild, computed } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, computed } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -23,7 +23,7 @@ import { CrewService } from '../../services/crew.service';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements AfterViewInit {
   public dataSource = new MatTableDataSource<Crew>([]);
   public displayedColumns: string[] = [
     'first_name',
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     )
   );
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
