@@ -103,6 +103,7 @@
           type="number"
           formControlName="days_on_board"
           required
+          min="0"
           placeholder="{{ 'ADD_CREW_MODAL.DAYS_ON_BOARD' | translate }}"
         />
         <mat-error *ngIf="formGroup.get('days_on_board')?.hasError('required')">
@@ -120,6 +121,7 @@
           type="number"
           formControlName="daily_rate"
           required
+          min="0"
           placeholder="{{ 'ADD_CREW_MODAL.DAILY_RATE' | translate }}"
         />
         <mat-error *ngIf="formGroup.get('daily_rate')?.hasError('required')">
