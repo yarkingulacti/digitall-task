@@ -1,0 +1,33 @@
+<div class="grid grid-cols-1 gap-4 mt-8">
+  <div
+    *ngFor="let certificate of crew?.certificates"
+    class="bg-white/5 rounded-lg border border-white/10 p-6"
+  >
+    <div class="flex justify-between items-start">
+      <div>
+        <h3 class="text-white text-lg font-medium">
+          {{ certificate.title }}
+        </h3>
+        <p class="text-white/60 mt-1">{{ certificate.description }}</p>
+      </div>
+      <div class="text-right">
+        <p class="text-white/60 text-sm mb-2">
+          Type: {{ certificate.type.title }}
+        </p>
+        <p class="text-white/60 text-sm mb-2">
+          Issue Date: {{ certificate.issue_date | date }}
+        </p>
+        <p
+          *ngIf="certificate.expiration_date"
+          class="text-sm"
+          [ngClass]="{
+            'text-red-400': isExpired(certificate.expiration_date),
+            'text-emerald-400': !isExpired(certificate.expiration_date)
+          }"
+        >
+          Expiration Date: {{ certificate.expiration_date | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

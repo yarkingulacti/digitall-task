@@ -1,0 +1,17 @@
+<div class="not-found-container bg-[#0e1d33!important]">
+  <div class="content bg-[#0e1d33!important]">
+    <h1>404</h1>
+    <h2>Sayfa Bulunamadı</h2>
+    <p>Aradığınız sayfa mevcut değil veya taşınmış olabilir.</p>
+    <div class="flex flex-row justify-center space-x-4 mt-12">
+      <button mat-fab extended (click)="router.navigate(['/'])">
+        <mat-icon>home</mat-icon>
+        Ana Sayfaya Dön
+      </button>
+      <button mat-fab extended (click)="location.back()">
+        <mat-icon>arrow_back</mat-icon>
+        Geri Git
+      </button>
+    </div>
+  </div>
+</div>

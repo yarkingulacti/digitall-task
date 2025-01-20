@@ -48,22 +48,6 @@ body {
   }
 }
 
-#crew-table-paginator,
-#certificate-table-paginator,
-#certificate-type-table-paginator {
-  & mat-select {
-    color: #ffffff !important;
-  }
-
-  & .mat-mdc-paginator-icon {
-    fill: #ffffff !important;
-  }
-
-  & .mat-mdc-icon-button[aria-disabled="true"] .mat-mdc-paginator-icon {
-    fill: #929292 !important;
-  }
-}
-
 // Cancel button
 button[mat-fab][extended]:not([color]) {
   background-color: rgba(255, 255, 255, 0.1);
@@ -405,10 +389,13 @@ button[mat-fab][extended][disabled] {
   }
 }
 
+// Mat-paginator theme customization
+.mat-mdc-paginator {
+  background-color: #0e1d33 !important;
+}
+
 // Mat-paginator custom styles
 .mat-mdc-paginator {
-  background-color: transparent !important;
-
   .mat-mdc-paginator-container {
     color: rgba(255, 255, 255, 0.87);
   }

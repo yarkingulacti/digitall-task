@@ -20,7 +20,7 @@ export function httpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { MatPaginatorTranslateI18N } from './helpers/mat-paginator-translate.module';
+import { MatPaginatorTranslateI18N } from './modules/mat-paginator-translate.module';
 
 export const appConfig: ApplicationConfig = {
   providers: [

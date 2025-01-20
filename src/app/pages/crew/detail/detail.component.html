@@ -1,0 +1,19 @@
+<div class="p-6">
+  <div class="flex items-center gap-2 mb-6">
+    <h1 class="text-2xl text-white font-bold">
+      {{ crew?.first_name }} {{ crew?.last_name }}
+    </h1>
+    <span class="text-white/40">Details</span>
+  </div>
+
+  <mat-divider class="border-white/10"></mat-divider>
+
+  <mat-tab-group class="crew-detail-tabs">
+    <mat-tab label="Details"
+      ><components-crew-detail></components-crew-detail
+    ></mat-tab>
+    <mat-tab label="Certificates"
+      ><components-crew-detail-certificates></components-crew-detail-certificates
+    ></mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CrewDetailComponent } from './crew/detail/detail.component';
-import { CrewCertificateCreateComponent } from './crew-certificate/create/create.component';
-import { CrewEditComponent } from './crew/edit/edit.component';
-import { CrewCertificateListComponent } from './crew-certificate/list/list.component';
-import { CrewCreateComponent } from './crew/create/create.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CertificateTypeCreateComponent } from './certificate-type/create/create.component';
-import { CertificateTypeEditComponent } from './certificate-type/edit/edit.component';
-import { CertificateTypeListComponent } from './certificate-type/list/list.component';
-import { CrewCertificateEditComponent } from './crew-certificate/edit/edit.component';
-import { CrewCertificatesComponent } from './crew/certificates/certificates.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CrewCreateComponent } from './pages/crew/create/create.component';
+import { CrewEditComponent } from './pages/crew/edit/edit.component';
+import { CrewCertificatesComponent } from './pages/crew/certificates/certificates.component';
+import { CrewDetailComponent } from './pages/crew/detail/detail.component';
+import { CertificateCreateComponent } from './pages/certificate/create/create.component';
+import { CertificateListComponent } from './pages/certificate/list/list.component';
+import { CertificateEditComponent } from './pages/certificate/edit/edit.component';
+import { CertificateTypeCreateComponent } from './pages/certificate/type/create/create.component';
+import { CertificateTypeListComponent } from './pages/certificate/type/list/list.component';
+import { CertificateTypeEditComponent } from './pages/certificate/type/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -36,16 +36,16 @@ export const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: CrewCertificateCreateComponent,
+        component: CertificateCreateComponent,
         outlet: 'modal',
       },
       {
         path: 'list',
-        component: CrewCertificateListComponent,
+        component: CertificateListComponent,
       },
       {
         path: ':id/edit',
-        component: CrewCertificateEditComponent,
+        component: CertificateEditComponent,
         outlet: 'modal',
       },
     ],
