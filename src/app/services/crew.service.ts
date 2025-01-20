@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Crew } from '../../data/crew';
+import { Crew } from '../../data/types';
 import crewMembers from '../../data/crew.data';
 import { TranslateHelper } from '../modules/translate-helper.module';
 
@@ -9,29 +9,25 @@ import { TranslateHelper } from '../modules/translate-helper.module';
   providedIn: 'root',
 })
 export class CrewService {
-  private crewMembersSubject = new BehaviorSubject<Crew[]>(crewMembers);
-  public crewMembers$ = this.crewMembersSubject.asObservable();
+  private crewSubject = new BehaviorSubject<Crew[]>(crewMembers);
+  public crew$ = this.crewSubject.asObservable();
 
   constructor(private translateHelper: TranslateHelper) {}
 
-  getCrewMembers() {
-    return this.crewMembersSubject.value;
+  getCrews() {
+    return this.crewSubject.value;
   }
 
   getCrew(slug: string) {
-    return this.crewMembersSubject.value.find((crew) => crew.slug === slug);
+    return this.crewSubject.value.find((crew) => crew.slug === slug);
   }
 
-  getCrewMemberBySlug(slug: string) {
-    return this.crewMembersSubject.value.find((crew) => crew.slug === slug);
+  getCrewBySlug(slug: string) {
+    return this.crewSubject.value.find((crew) => crew.slug === slug);
   }
 
-  async addCrew(newMember: Crew) {
-    if (
-      this.crewMembersSubject.value.find(
-        (member) => member.slug === newMember.slug
-      )
-    ) {
+  async addCrew(newCrew: Crew) {
+    if (this.crewSubject.value.find((member) => member.slug === newCrew.slug)) {
       Swal.fire({
         icon: 'error',
         title: await this.translateHelper.getTranslationByKey(
@@ -73,10 +69,7 @@ export class CrewService {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          this.crewMembersSubject.next([
-            ...this.crewMembersSubject.value,
-            newMember,
-          ]);
+          this.crewSubject.next([...this.crewSubject.value, newCrew]);
           Swal.fire({
             icon: 'success',
             title: await this.translateHelper.getTranslationByKey(
@@ -112,7 +105,7 @@ export class CrewService {
 
   async editCrew(slug: string, updatedCrew: Crew) {
     if (
-      this.crewMembersSubject.value.find(
+      this.crewSubject.value.find(
         (crew) => crew.slug === updatedCrew.slug && crew.id !== updatedCrew.id
       )
     ) {
@@ -126,10 +119,10 @@ export class CrewService {
       });
     } else {
       try {
-        const updatedData = this.crewMembersSubject.value.map((crew) =>
+        const updatedData = this.crewSubject.value.map((crew) =>
           crew.slug === slug ? updatedCrew : crew
         );
-        this.crewMembersSubject.next([...updatedData]);
+        this.crewSubject.next([...updatedData]);
 
         Swal.fire({
           icon: 'success',
@@ -181,10 +174,10 @@ export class CrewService {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const updatedData = this.crewMembersSubject.value.filter(
+          const updatedData = this.crewSubject.value.filter(
             (crew) => crew.slug !== slug
           );
-          this.crewMembersSubject.next([...updatedData]);
+          this.crewSubject.next([...updatedData]);
 
           Swal.fire({
             icon: 'success',
