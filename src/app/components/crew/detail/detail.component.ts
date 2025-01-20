@@ -1,20 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatTabsModule } from '@angular/material/tabs';
 import { Crew } from '../../../../data/crew';
 import { CrewService } from '../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
-import { CrewDetailComponent as DetailComponent } from '../../../components/crew/detail/detail.component';
-import { CrewDetailCertificatesComponent } from '../../../components/crew/detail/certificates/certificates.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  imports: [
-    MatDividerModule,
-    MatTabsModule,
-    DetailComponent,
-    CrewDetailCertificatesComponent,
-  ],
-  selector: 'pages-crew-detail',
+  imports: [CommonModule],
+  selector: 'components-crew-detail',
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
