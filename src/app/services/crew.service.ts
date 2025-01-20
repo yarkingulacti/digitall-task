@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Crew } from '../../crew';
+import { Crew } from '../../data/crew';
 import crewMembers from '../../data/crew.data';
 import { TranslateHelper } from '../modules/translate-helper.module';
 

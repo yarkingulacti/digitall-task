@@ -2,7 +2,7 @@
 
 import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
-import { Crew } from '../crew';
+import { Crew } from './crew';
 import titles from './titles.data';
 import certificates from './certificates.data';
 
