@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Certificate, Crew } from '../../../../data/crew';
+import { Certificate, Crew } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class CrewCertificatesComponent implements OnInit {
 
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug') || '';
-    const crewMember = this.crewService.getCrewMemberBySlug(slug);
+    const crewMember = this.crewService.getCrewBySlug(slug);
 
     if (crewMember) {
       this.crewMember = crewMember;

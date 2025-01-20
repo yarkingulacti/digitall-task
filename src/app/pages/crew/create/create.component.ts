@@ -16,7 +16,7 @@ import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { Certificate, Crew, Title } from '../../../../data/crew';
+import { Certificate, Crew, Title } from '../../../../data/types';
 import titles from '../../../../data/titles.data';
 import { CrewService } from '../../../services/crew.service';
 import { CertificateService } from '../../../services/certificate.service';

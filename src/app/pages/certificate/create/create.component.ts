@@ -22,7 +22,7 @@ import {
   CertificateType,
   CertificateTypeService,
 } from '../../../services/certificate-type.service';
-import { Certificate } from '../../../../data/crew';
+import { Certificate } from '../../../../data/types';
 
 @Component({
   imports: [

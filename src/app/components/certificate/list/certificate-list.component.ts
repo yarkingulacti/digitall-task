@@ -7,8 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Certificate } from '../../../../data/crew';
 import { CertificateService } from '../../../services/certificate.service';
+import { Certificate } from '../../../../data/types';
 
 @Component({
   imports: [

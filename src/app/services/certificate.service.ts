@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import Swal from 'sweetalert2';
 import certificates from '../../data/certificates.data';
-import { Certificate } from '../../data/crew';
+import { Certificate } from '../../data/types';
 import { TranslateHelper } from '../modules/translate-helper.module';
 
 @Injectable({

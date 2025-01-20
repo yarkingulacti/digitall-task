@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Crew } from '../../../../../data/crew';
+import { Crew } from '../../../../../data/types';
 import { CrewService } from '../../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
 

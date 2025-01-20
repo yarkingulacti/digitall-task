@@ -2,7 +2,7 @@
 
 import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
-import { Crew } from './crew';
+import { Crew } from './types';
 import titles from './titles.data';
 import certificates from './certificates.data';
 
@@ -13,7 +13,7 @@ const getRandomItems = <T>(arr: T[], min: number = 1, max: number = 3): T[] => {
   return shuffled.slice(0, count);
 };
 
-const crewMembers: Crew[] = [
+const crews: Crew[] = [
   {
     id: uuidv4(),
     first_name: 'John',
@@ -276,4 +276,4 @@ const crewMembers: Crew[] = [
   },
 ];
 
-export default crewMembers;
+export default crews;

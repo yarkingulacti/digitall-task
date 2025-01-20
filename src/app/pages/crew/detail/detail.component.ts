@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
-import { Crew } from '../../../../data/crew';
+import { Crew } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
 import { CrewDetailComponent as DetailComponent } from '../../../components/crew/detail/detail.component';

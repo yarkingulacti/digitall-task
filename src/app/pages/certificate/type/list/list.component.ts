@@ -5,7 +5,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
-import { CertificateType } from '../../../../../data/crew';
+import { CertificateType } from '../../../../../data/types';
 import { CertificateTypeService } from '../../../../services/certificate-type.service';
 
 @Component({
