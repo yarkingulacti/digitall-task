@@ -20,6 +20,7 @@ import { Certificate, Crew, Title } from '../../../../data/types';
 import titles from '../../../../data/titles.data';
 import { CrewService } from '../../../services/crew.service';
 import { CertificateService } from '../../../services/certificate.service';
+import { nationalities } from '../../../../data/nationalities.data';
 
 @Component({
   imports: [
@@ -40,6 +41,7 @@ import { CertificateService } from '../../../services/certificate.service';
 export class CrewCreateComponent implements OnInit {
   formGroup: FormGroup;
   titles: Title[] = titles;
+  nationalities = nationalities;
   crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
@@ -65,26 +67,25 @@ export class CrewCreateComponent implements OnInit {
     this.crewCertificates = this.certificateService.certificates;
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formGroup.valid) {
-      const formValue = this.formGroup.value;
       const newCrew: Crew = {
-        ...formValue,
+        ...this.formGroup.value,
         id: uuidv4(),
-        certificates: formValue.certificate,
-        slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
-          lower: true,
-        }),
-        total_income: formValue.days_on_board * formValue.daily_rate,
+        certificates: this.formGroup.value.certificate,
+        slug: slugify(
+          `${this.formGroup.value.first_name} ${this.formGroup.value.last_name}`,
+          {
+            lower: true,
+          }
+        ),
+        total_income:
+          this.formGroup.value.days_on_board * this.formGroup.value.daily_rate,
       };
 
-      this.crewService.addCrew(newCrew);
+      await this.crewService.addCrew(newCrew);
       this.closeModal();
     }
-  }
-
-  onCancel() {
-    this.closeModal();
   }
 
   public closeModal() {
