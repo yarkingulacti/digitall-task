@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { certificateTypes } from '../certificate-types.data';
 import { v4 as uuidv4 } from 'uuid';
 import { TranslateHelper } from '../modules/translate-helper.module';
+import { certificateTypes } from '../../data/certificate-types.data';
 
 export interface CertificateType {
   id: string;

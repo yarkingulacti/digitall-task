@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   CertificateTypeService,
   CertificateType,
-} from '../../../services/type.service';
+} from '../../../../services/certificate-type.service';
 
 @Component({
   imports: [
@@ -35,7 +35,7 @@ import {
   styleUrls: ['./edit.component.scss'],
 })
 export class CertificateTypeEditComponent implements OnInit {
-  typeForm: FormGroup;
+  formGroup: FormGroup;
   typeId: string = '';
 
   constructor(
@@ -44,7 +44,7 @@ export class CertificateTypeEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.typeForm = this.fb.group({
+    this.formGroup = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
     });
@@ -57,7 +57,7 @@ export class CertificateTypeEditComponent implements OnInit {
     );
 
     if (certificateType) {
-      this.typeForm.patchValue({
+      this.formGroup.patchValue({
         title: certificateType.title,
         description: certificateType.description,
       });
@@ -67,8 +67,8 @@ export class CertificateTypeEditComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (this.typeForm.valid) {
-      const formValue = this.typeForm.value;
+    if (this.formGroup.valid) {
+      const formValue = this.formGroup.value;
       const updatedType: CertificateType = {
         id: this.typeId,
         ...formValue,

@@ -8,7 +8,7 @@ import { TranslateHelper } from '../modules/translate-helper.module';
 @Injectable({
   providedIn: 'root',
 })
-export class CrewServiceService {
+export class CrewService {
   private crewMembersSubject = new BehaviorSubject<Crew[]>(crewMembers);
   public crewMembers$ = this.crewMembersSubject.asObservable();
 

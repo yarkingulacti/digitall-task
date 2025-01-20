@@ -5,8 +5,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Crew } from '../../../crew';
-import { CrewServiceService } from '../../services/crew.service';
+import { Crew } from '../../../../data/crew';
+import { CrewService } from '../../../services/crew.service';
 
 @Component({
   imports: [
@@ -19,6 +19,7 @@ import { CrewServiceService } from '../../services/crew.service';
     MatIcon,
     TranslateModule,
   ],
+  standalone: true,
   selector: 'component-crew-list',
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss',
@@ -41,7 +42,7 @@ export class CrewListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   constructor(
-    private crewService: CrewServiceService,
+    private crewService: CrewService,
     private router: Router,
     private translate: TranslateService
   ) {

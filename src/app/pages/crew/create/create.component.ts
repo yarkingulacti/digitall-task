@@ -16,10 +16,10 @@ import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { CrewServiceService } from '../../services/crew.service';
-import { Crew, Certificate, CrewTitle } from '../../../crew';
-import titles from '../../../data/titles.data';
-import { CertificateService } from '../../services/certificate.service';
+import { Certificate, Crew, Title } from '../../../../data/crew';
+import titles from '../../../../data/titles.data';
+import { CrewService } from '../../../services/crew.service';
+import { CertificateService } from '../../../services/certificate.service';
 
 @Component({
   imports: [
@@ -33,23 +33,23 @@ import { CertificateService } from '../../services/certificate.service';
     MatDialogModule,
     TranslateModule,
   ],
-  selector: 'app-crew-create',
+  selector: 'pages-crew-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
+  styleUrl: './create.component.scss',
 })
 export class CrewCreateComponent implements OnInit {
-  crewForm: FormGroup;
-  titles: CrewTitle[] = titles;
+  formGroup: FormGroup;
+  titles: Title[] = titles;
   crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
     private fb: FormBuilder,
-    private crewService: CrewServiceService,
-    private crewCertificateService: CertificateService,
+    private crewService: CrewService,
+    private certificateService: CertificateService,
     private router: Router
   ) {
-    this.crewForm = this.fb.group({
+    this.formGroup = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       nationality: ['', Validators.required],
@@ -62,12 +62,12 @@ export class CrewCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crewCertificates = this.crewCertificateService.certificates;
+    this.crewCertificates = this.certificateService.certificates;
   }
 
   onSubmit() {
-    if (this.crewForm.valid) {
-      const formValue = this.crewForm.value;
+    if (this.formGroup.valid) {
+      const formValue = this.formGroup.value;
       const newCrew: Crew = {
         ...formValue,
         id: uuidv4(),

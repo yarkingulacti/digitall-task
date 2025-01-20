@@ -13,16 +13,16 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CertificateService } from '../../services/certificate.service';
-import { Certificate } from '../../../crew';
 import Swal from 'sweetalert2';
-import {
-  CertificateType,
-  CertificateTypeService,
-} from '../../services/type.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { CertificateService } from '../../../services/certificate.service';
+import {
+  CertificateType,
+  CertificateTypeService,
+} from '../../../services/certificate-type.service';
+import { Certificate } from '../../../../data/crew';
 
 @Component({
   imports: [
@@ -38,12 +38,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatNativeDateModule,
     TranslateModule,
   ],
-  selector: 'app-crew-certificate-create',
+  selector: 'pages-certificate-create',
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
 })
-export class CrewCertificateCreateComponent {
-  certificateForm: FormGroup;
+export class CertificateCreateComponent {
+  formGroup: FormGroup;
   certificateTypes: CertificateType[] = [];
 
   constructor(
@@ -52,7 +52,7 @@ export class CrewCertificateCreateComponent {
     private certificateTypeService: CertificateTypeService,
     private router: Router
   ) {
-    this.certificateForm = this.fb.group({
+    this.formGroup = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       type: [null, Validators.required],
@@ -62,9 +62,9 @@ export class CrewCertificateCreateComponent {
     this.certificateTypes = this.certificateTypeService.certificateTypesList;
   }
 
-  onSubmit() {
-    if (this.certificateForm.valid) {
-      const formValue = this.certificateForm.value;
+  public onSubmit() {
+    if (this.formGroup.valid) {
+      const formValue = this.formGroup.value;
       const certificate: Certificate = {
         id: crypto.randomUUID(),
         type: formValue.type,
@@ -84,7 +84,7 @@ export class CrewCertificateCreateComponent {
     }
   }
 
-  onCancel() {
+  public onCancel() {
     this.closeModal();
   }
 

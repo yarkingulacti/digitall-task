@@ -20,7 +20,7 @@
     </div>
 
     <form
-      [formGroup]="certificateForm"
+      [formGroup]="formGroup"
       (ngSubmit)="onSubmit()"
       class="flex flex-col gap-4 mt-6"
     >
@@ -32,7 +32,7 @@
           required
           placeholder="{{ 'ADD_CERTIFICATE_MODAL.TITLE' | translate }}"
         />
-        <mat-error *ngIf="certificateForm.get('title')?.hasError('required')">
+        <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
           {{ 'ADD_CERTIFICATE_MODAL.TITLE' | translate }}
         </mat-error>
       </mat-form-field>
@@ -47,7 +47,7 @@
           placeholder="{{ 'ADD_CERTIFICATE_MODAL.DESCRIPTION' | translate }}"
         ></textarea>
         <mat-error
-          *ngIf="certificateForm.get('description')?.hasError('required')"
+          *ngIf="formGroup.get('description')?.hasError('required')"
         >
           {{ 'ADD_CERTIFICATE_MODAL.DESCRIPTION' | translate }}
         </mat-error>
@@ -60,7 +60,7 @@
             {{ type.title }}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="certificateForm.get('type')?.hasError('required')">
+        <mat-error *ngIf="formGroup.get('type')?.hasError('required')">
           {{ 'ADD_CERTIFICATE_MODAL.TYPE' | translate }}
         </mat-error>
       </mat-form-field>
@@ -80,7 +80,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #issuePicker></mat-datepicker>
         <mat-error
-          *ngIf="certificateForm.get('issue_date')?.hasError('required')"
+          *ngIf="formGroup.get('issue_date')?.hasError('required')"
         >
           {{ 'ADD_CERTIFICATE_MODAL.ISSUE_DATE' | translate }}
         </mat-error>
@@ -116,7 +116,7 @@
           mat-fab
           extended
           type="submit"
-          [disabled]="!certificateForm.valid"
+          [disabled]="!formGroup.valid"
           class="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-white/10 disabled:text-white/30"
         >
           <mat-icon>add</mat-icon>

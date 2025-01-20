@@ -43,8 +43,8 @@ p {
   border-radius: 5px;
   font-weight: 500;
   transition: background-color 0.3s;
-}
 
-.home-button:hover {
-  background-color: #0b5ed7;
+  &:hover {
+    background-color: #0b5ed7;
+  }
 }

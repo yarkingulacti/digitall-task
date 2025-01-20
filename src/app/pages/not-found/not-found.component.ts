@@ -5,19 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-not-found',
   imports: [MatButtonModule, MatIconModule],
+  selector: 'pages-not-found',
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.css',
 })
 export class NotFoundComponent {
-  constructor(private router: Router, private location: Location) {}
-
-  onHomeClick() {
-    this.router.navigate(['/']);
-  }
-
-  goBack() {
-    this.location.back();
-  }
+  constructor(public router: Router, public location: Location) {}
 }

@@ -5,12 +5,12 @@ import { CrewCreateComponent } from './pages/crew/create/create.component';
 import { CrewEditComponent } from './pages/crew/edit/edit.component';
 import { CrewCertificatesComponent } from './pages/crew/certificates/certificates.component';
 import { CrewDetailComponent } from './pages/crew/detail/detail.component';
-import { CrewCertificateCreateComponent } from './pages/certificate/create/create.component';
-import { CrewCertificateListComponent } from './pages/certificate/list/list.component';
-import { CrewCertificateEditComponent } from './pages/certificate/edit/edit.component';
-import { CertificateTypeCreateComponent } from './pages/type/create/create.component';
-import { CertificateTypeListComponent } from './pages/type/list/list.component';
-import { CertificateTypeEditComponent } from './pages/type/edit/edit.component';
+import { CertificateCreateComponent } from './pages/certificate/create/create.component';
+import { CertificateListComponent } from './pages/certificate/list/list.component';
+import { CertificateEditComponent } from './pages/certificate/edit/edit.component';
+import { CertificateTypeCreateComponent } from './pages/certificate/type/create/create.component';
+import { CertificateTypeListComponent } from './pages/certificate/type/list/list.component';
+import { CertificateTypeEditComponent } from './pages/certificate/type/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -36,16 +36,16 @@ export const routes: Routes = [
     children: [
       {
         path: 'create',
-        component: CrewCertificateCreateComponent,
+        component: CertificateCreateComponent,
         outlet: 'modal',
       },
       {
         path: 'list',
-        component: CrewCertificateListComponent,
+        component: CertificateListComponent,
       },
       {
         path: ':id/edit',
-        component: CrewCertificateEditComponent,
+        component: CertificateEditComponent,
         outlet: 'modal',
       },
     ],

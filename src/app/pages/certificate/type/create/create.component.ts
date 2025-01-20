@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { CertificateTypeService } from '../../../services/type.service';
+import { CertificateTypeService } from '../../../../services/certificate-type.service';
 
 @Component({
   imports: [
@@ -27,27 +27,27 @@ import { CertificateTypeService } from '../../../services/type.service';
     MatDialogModule,
     TranslateModule,
   ],
-  selector: 'app-certificate-type-create',
+  selector: 'pages-certificate-type-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
 })
 export class CertificateTypeCreateComponent {
-  typeForm: FormGroup;
+  formGroup: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private certificateTypeService: CertificateTypeService,
     private router: Router
   ) {
-    this.typeForm = this.fb.group({
+    this.formGroup = this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
     });
   }
 
   async onSubmit() {
-    if (this.typeForm.valid) {
-      const formValue = this.typeForm.value;
+    if (this.formGroup.valid) {
+      const formValue = this.formGroup.value;
       const success = await this.certificateTypeService.createCertificateType({
         title: formValue.title,
         description: formValue.description,
@@ -72,7 +72,7 @@ export class CertificateTypeCreateComponent {
         });
       }
     } else {
-      this.typeForm.markAllAsTouched();
+      this.formGroup.markAllAsTouched();
     }
   }
 

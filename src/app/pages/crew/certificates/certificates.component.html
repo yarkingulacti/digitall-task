@@ -1,58 +1,58 @@
-<div class="modal-container">
-  <div class="modal-content">
-    <div class="modal-header">
-      <div class="breadcrumb">
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl">
+    <div class="flex justify-between items-center p-6 border-b">
+      <div class="flex items-center text-gray-600 text-sm">
         <span>Crew</span>
-        <span class="mx-2">></span>
+        <span class="mx-2">&gt;</span>
         <span>Certificates</span>
       </div>
-      <button mat-icon-button class="close-button" (click)="closeModal()">
+      <button mat-icon-button class="text-gray-500 hover:text-gray-700" (click)="closeModal()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
 
-    <div class="modal-content">
-      <h2>
+    <div class="p-6">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
         {{ crewMember?.first_name }} {{ crewMember?.last_name }}'s Certificates
       </h2>
       <table mat-table [dataSource]="dataSource" class="w-full">
         <!-- Title Column -->
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let certificate">
+          <th mat-header-cell *matHeaderCellDef class="font-semibold text-gray-800">Title</th>
+          <td mat-cell *matCellDef="let certificate" class="py-4">
             {{ certificate.title }}
           </td>
         </ng-container>
 
         <!-- Type Column -->
         <ng-container matColumnDef="type">
-          <th mat-header-cell *matHeaderCellDef>Type</th>
-          <td mat-cell *matCellDef="let certificate">
+          <th mat-header-cell *matHeaderCellDef class="font-semibold text-gray-800">Type</th>
+          <td mat-cell *matCellDef="let certificate" class="py-4">
             {{ certificate.type.title }}
           </td>
         </ng-container>
 
         <!-- Issue Date Column -->
         <ng-container matColumnDef="issue_date">
-          <th mat-header-cell *matHeaderCellDef>Issue Date</th>
-          <td mat-cell *matCellDef="let certificate">
+          <th mat-header-cell *matHeaderCellDef class="font-semibold text-gray-800">Issue Date</th>
+          <td mat-cell *matCellDef="let certificate" class="py-4">
             {{ certificate.issue_date | date }}
           </td>
         </ng-container>
 
         <!-- Expiration Date Column -->
         <ng-container matColumnDef="expiration_date">
-          <th mat-header-cell *matHeaderCellDef>Expiration Date</th>
-          <td mat-cell *matCellDef="let certificate">
+          <th mat-header-cell *matHeaderCellDef class="font-semibold text-gray-800">Expiration Date</th>
+          <td mat-cell *matCellDef="let certificate" class="py-4">
             {{ certificate.expiration_date | date }}
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-50"></tr>
         <tr
           mat-row
           *matRowDef="let row; columns: displayedColumns"
-          class="hover:bg-gray-50"
+          class="hover:bg-gray-50 transition-colors duration-150 ease-in-out border-b border-gray-100"
         ></tr>
       </table>
     </div>

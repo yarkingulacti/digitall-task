@@ -6,9 +6,9 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
-import { CertificateService } from '../../services/certificate.service';
-import { Certificate } from '../../../crew';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Certificate } from '../../../../data/crew';
+import { CertificateService } from '../../../services/certificate.service';
 
 @Component({
   imports: [
@@ -19,6 +19,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     DatePipe,
     TranslateModule,
   ],
+  standalone: true,
   selector: 'component-certificate-list',
   templateUrl: './certificate-list.component.html',
   styleUrls: ['./certificate-list.component.scss'],
@@ -60,14 +61,20 @@ export class CertificateListComponent implements AfterViewInit {
 
   onDeleteClick(id: string) {
     Swal.fire({
-      title: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.TITLE'),
+      title: this.translate.instant(
+        'CERTIFICATE_LIST.DELETE_CONFIRMATION.TITLE'
+      ),
       text: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.TEXT'),
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.SUBMIT'),
-      cancelButtonText: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.CANCEL'),
+      confirmButtonText: this.translate.instant(
+        'CERTIFICATE_LIST.DELETE_CONFIRMATION.SUBMIT'
+      ),
+      cancelButtonText: this.translate.instant(
+        'CERTIFICATE_LIST.DELETE_CONFIRMATION.CANCEL'
+      ),
     }).then((result) => {
       if (result.isConfirmed) {
         this.certificateService.deleteCertificate(id);

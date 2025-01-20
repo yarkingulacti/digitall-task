@@ -2,7 +2,7 @@
 
 import { Certificate } from './crew';
 import { v4 as uuidv4 } from 'uuid';
-import { certificateTypes } from '../certificate-types.data';
+import { certificateTypes } from './certificate-types.data';
 
 const certificates: Certificate[] = [
   {

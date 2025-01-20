@@ -13,16 +13,16 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CertificateService } from '../../services/certificate.service';
-import { Certificate } from '../../../crew';
 import Swal from 'sweetalert2';
-import {
-  CertificateType,
-  CertificateTypeService,
-} from '../../services/type.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { CertificateService } from '../../../services/certificate.service';
+import {
+  CertificateType,
+  CertificateTypeService,
+} from '../../../services/certificate-type.service';
+import { Certificate } from '../../../../data/crew';
 
 @Component({
   imports: [
@@ -38,12 +38,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatNativeDateModule,
     TranslateModule,
   ],
-  selector: 'app-crew-certificate-edit',
+  selector: 'pages-certificate-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  styleUrl: './edit.component.scss',
 })
-export class CrewCertificateEditComponent implements OnInit {
-  certificateForm: FormGroup;
+export class CertificateEditComponent implements OnInit {
+  formGroup: FormGroup;
   certificateId: string = '';
   certificateTypes: CertificateType[] = [];
 
@@ -54,7 +54,7 @@ export class CrewCertificateEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.certificateForm = this.fb.group({
+    this.formGroup = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       type: [null, Validators.required],
@@ -80,7 +80,7 @@ export class CrewCertificateEditComponent implements OnInit {
           ? new Date(certificate.expiration_date)
           : null;
 
-        this.certificateForm.patchValue({
+        this.formGroup.patchValue({
           title: certificate.title,
           description: certificate.description,
           issue_date: issueDate,
@@ -104,7 +104,7 @@ export class CrewCertificateEditComponent implements OnInit {
       const certificate = this.certificateService.getCertificate(id);
 
       if (certificate) {
-        this.certificateForm.patchValue({
+        this.formGroup.patchValue({
           ...certificate,
           type: certificate.type,
         });
@@ -113,7 +113,7 @@ export class CrewCertificateEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.certificateForm.valid) {
+    if (this.formGroup.valid) {
       const currentCertificate = this.certificateService.getCertificate(
         this.certificateId
       );
@@ -129,7 +129,7 @@ export class CrewCertificateEditComponent implements OnInit {
         return;
       }
 
-      const formValue = this.certificateForm.value;
+      const formValue = this.formGroup.value;
       const updatedCertificate: Certificate = {
         id: this.certificateId,
         title: formValue.title,

@@ -4,15 +4,14 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Crew, Certificate } from '../../../crew';
-import { CrewServiceService } from '../../services/crew.service';
+import { Certificate, Crew } from '../../../../data/crew';
+import { CrewService } from '../../../services/crew.service';
 
 @Component({
-  selector: 'app-crew-certificates',
-  templateUrl: './certificates.component.html',
-  styleUrls: ['./certificates.component.scss'],
-  standalone: true,
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule],
+  selector: 'pages-crew-certificates',
+  templateUrl: './certificates.component.html',
+  styleUrl: './certificates.component.scss',
 })
 export class CrewCertificatesComponent implements OnInit {
   crewMember: Crew | null = null;
@@ -25,7 +24,7 @@ export class CrewCertificatesComponent implements OnInit {
   ];
 
   constructor(
-    private crewService: CrewServiceService,
+    private crewService: CrewService,
     private route: ActivatedRoute,
     private router: Router
   ) {}

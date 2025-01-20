@@ -13,12 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
-import { CrewServiceService } from '../../services/crew.service';
-import { Crew, Certificate, CrewTitle } from '../../../crew';
-import titles from '../../../data/titles.data';
-import { CertificateService } from '../../services/certificate.service';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import titles from '../../../../data/titles.data';
+import { Certificate, Crew, Title } from '../../../../data/crew';
+import { CrewService } from '../../../services/crew.service';
+import { CertificateService } from '../../../services/certificate.service';
 
 @Component({
   imports: [
@@ -32,25 +32,25 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDialogModule,
     TranslateModule,
   ],
-  selector: 'app-crew-edit',
+  selector: 'pages-crew-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  styleUrl: './edit.component.scss',
 })
 export class CrewEditComponent implements OnInit {
-  crewForm: FormGroup;
+  formGroup: FormGroup;
   crewMember: Crew | undefined;
-  titles: CrewTitle[] = titles;
+  titles: Title[] = titles;
   crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
     private fb: FormBuilder,
-    private crewService: CrewServiceService,
+    private crewService: CrewService,
     private crewCertificateService: CertificateService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.crewForm = this.fb.group({
+    this.formGroup = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       nationality: ['', Validators.required],
@@ -68,7 +68,7 @@ export class CrewEditComponent implements OnInit {
     if (slug) {
       this.crewMember = this.crewService.getCrew(slug);
       if (this.crewMember) {
-        this.crewForm.patchValue({
+        this.formGroup.patchValue({
           ...this.crewMember,
           certificate: this.crewMember.certificates,
         });
@@ -77,8 +77,8 @@ export class CrewEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.crewForm.valid && this.crewMember) {
-      const formValue = this.crewForm.value;
+    if (this.formGroup.valid && this.crewMember) {
+      const formValue = this.formGroup.value;
       const updatedCrew: Crew = {
         ...this.crewMember,
         ...formValue,

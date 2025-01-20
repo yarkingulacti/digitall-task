@@ -3,27 +3,27 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { Crew } from '../../../crew';
-import { CrewServiceService } from '../../services/crew.service';
+import { Crew } from '../../../../data/crew';
+import { CrewService } from '../../../services/crew.service';
 
 @Component({
   imports: [CommonModule, MatDividerModule, MatTabsModule],
-  selector: 'app-crew-detail',
+  selector: 'pages-crew-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss'],
+  styleUrl: './detail.component.scss',
 })
 export class CrewDetailComponent implements OnInit {
-  crewMember: Crew | undefined;
+  crew: Crew | undefined;
 
   constructor(
-    private crewService: CrewServiceService,
+    private crewService: CrewService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
-      this.crewMember = this.crewService.getCrew(slug);
+      this.crew = this.crewService.getCrew(slug);
     }
   }
 
