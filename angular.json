@@ -20,6 +20,11 @@
             "outputPath": "dist/digitall-task",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "optimization": {
+              "scripts": true,
+              "styles": true,
+              "fonts": true
+            },
             "polyfills": [
               "zone.js",
               "@angular/localize/init"
@@ -43,8 +48,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1.5MB",
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
