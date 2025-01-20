@@ -34,10 +34,10 @@
           matInput
           formControlName="first_name"
           required
-          [placeholder]="'ADD_CREW_MODAL.FIRST_NAME' | translate"
+          [placeholder]="'EDIT_CREW_MODAL.FIRST_NAME' | translate"
         />
         <mat-error *ngIf="formGroup.get('first_name')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.FIRST_NAME.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.FIRST_NAME.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -47,23 +47,25 @@
           matInput
           formControlName="last_name"
           required
-          [placeholder]="'ADD_CREW_MODAL.LAST_NAME' | translate"
+          [placeholder]="'EDIT_CREW_MODAL.LAST_NAME' | translate"
         />
         <mat-error *ngIf="formGroup.get('last_name')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.LAST_NAME.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.LAST_NAME.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>{{ "EDIT_CREW_MODAL.NATIONALITY" | translate }}</mat-label>
-        <input
-          matInput
-          formControlName="nationality"
-          required
-          [placeholder]="'ADD_CREW_MODAL.NATIONALITY' | translate"
-        />
+        <mat-select formControlName="nationality">
+          <mat-option
+            *ngFor="let nationality of nationalities"
+            [value]="nationality"
+          >
+            {{ nationality }}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="formGroup.get('nationality')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.NATIONALITY.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.NATIONALITY.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -75,7 +77,7 @@
           </mat-option>
         </mat-select>
         <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.TITLE.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.TITLE.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -90,7 +92,7 @@
           </mat-option>
         </mat-select>
         <mat-error *ngIf="formGroup.get('certificate')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.CERTIFICATES.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.CERTIFICATES.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -100,11 +102,15 @@
           matInput
           type="number"
           formControlName="days_on_board"
+          min="0"
           required
           [placeholder]="'ADD_CREW_MODAL.DAYS_ON_BOARD' | translate"
         />
         <mat-error *ngIf="formGroup.get('days_on_board')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.DAYS_ON_BOARD.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.DAYS_ON_BOARD.REQUIRED" | translate }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.get('days_on_board')?.hasError('min')">
+          {{ "EDIT_CREW_MODAL.DAYS_ON_BOARD.MIN" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -114,23 +120,27 @@
           matInput
           type="number"
           formControlName="daily_rate"
+          min="0"
           required
-          [placeholder]="'ADD_CREW_MODAL.DAILY_RATE' | translate"
+          [placeholder]="'EDIT_CREW_MODAL.DAILY_RATE' | translate"
         />
         <mat-error *ngIf="formGroup.get('daily_rate')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.DAILY_RATE.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.DAILY_RATE.REQUIRED" | translate }}
+        </mat-error>
+        <mat-error *ngIf="formGroup.get('daily_rate')?.hasError('min')">
+          {{ "EDIT_CREW_MODAL.DAILY_RATE.MIN" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>{{ "EDIT_CREW_MODAL.CURRENCY" | translate }}</mat-label>
-        <mat-select formControlName="currency">
+        <mat-select formControlName="currency" required>
           <mat-option *ngFor="let currency of currencies" [value]="currency">
             {{ currency }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="formGroup.get('currency')?.hasError('required')">
-          {{ "ADD_CREW_MODAL.CURRENCY.REQUIRED" | translate }}
+          {{ "EDIT_CREW_MODAL.CURRENCY.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
@@ -139,7 +149,7 @@
           mat-fab
           extended
           type="button"
-          (click)="onCancel()"
+          (click)="closeModal()"
           class="bg-white/10 text-white hover:bg-white/20"
         >
           <mat-icon>close</mat-icon>

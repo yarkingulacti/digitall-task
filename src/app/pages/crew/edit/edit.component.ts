@@ -19,6 +19,7 @@ import titles from '../../../../data/titles.data';
 import { Certificate, Crew, Title } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
 import { CertificateService } from '../../../services/certificate.service';
+import { nationalities } from '../../../../data/nationalities.data';
 
 @Component({
   imports: [
@@ -40,6 +41,7 @@ export class CrewEditComponent implements OnInit {
   formGroup: FormGroup;
   crewMember: Crew | undefined;
   titles: Title[] = titles;
+  nationalities = nationalities;
   crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
@@ -65,8 +67,10 @@ export class CrewEditComponent implements OnInit {
   ngOnInit() {
     this.crewCertificates = this.crewCertificateService.certificates;
     const slug = this.route.snapshot.paramMap.get('slug');
+
     if (slug) {
       this.crewMember = this.crewService.getCrew(slug);
+
       if (this.crewMember) {
         this.formGroup.patchValue({
           ...this.crewMember,
@@ -76,25 +80,25 @@ export class CrewEditComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formGroup.valid && this.crewMember) {
-      const formValue = this.formGroup.value;
       const updatedCrew: Crew = {
         ...this.crewMember,
-        ...formValue,
-        certificates: formValue.certificate,
-        slug: slugify(`${formValue.first_name} ${formValue.last_name}`, {
-          lower: true,
-        }),
-        total_income: formValue.days_on_board * formValue.daily_rate,
+        ...this.formGroup.value,
+        certificates: this.formGroup.value.certificate,
+        slug: slugify(
+          `${this.formGroup.value.first_name} ${this.formGroup.value.last_name}`,
+          {
+            lower: true,
+          }
+        ),
+        total_income:
+          this.formGroup.value.days_on_board * this.formGroup.value.daily_rate,
       };
-      this.crewService.editCrew(this.crewMember.slug, updatedCrew);
+
+      await this.crewService.editCrew(this.crewMember.slug, updatedCrew);
       this.closeModal();
     }
-  }
-
-  onCancel() {
-    this.closeModal();
   }
 
   public closeModal() {
