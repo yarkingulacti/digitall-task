@@ -277,41 +277,43 @@ button[mat-fab][extended][disabled] {
   }
 
   &.mat-mdc-select-disabled {
-    .mat-mdc-select-value, .mat-mdc-select-arrow {
+    .mat-mdc-select-value,
+    .mat-mdc-select-arrow {
       color: rgba(255, 255, 255, 0.38);
     }
   }
 }
 
 // Override Material Select Panel Styles for Dark Theme
-.mat-mdc-select-panel, .mat-mdc-autocomplete-panel {
+.mat-mdc-select-panel,
+.mat-mdc-autocomplete-panel {
   background: #0e1d33 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  
+
   .mat-mdc-option {
     min-height: 48px !important;
     color: rgba(255, 255, 255, 0.87) !important;
-    
+
     &:hover:not(.mat-mdc-option-disabled) {
       background: rgba(255, 255, 255, 0.08) !important;
     }
-    
+
     &.mat-mdc-option-active {
       background: rgba(25, 118, 210, 0.16) !important;
     }
-    
+
     &.mat-selected:not(.mat-mdc-option-multiple):not(.mat-mdc-option-disabled) {
       background: rgba(25, 118, 210, 0.12) !important;
-      
+
       &:hover {
         background: rgba(25, 118, 210, 0.2) !important;
       }
     }
-    
+
     .mdc-list-item__primary-text {
       color: rgba(255, 255, 255, 0.87) !important;
     }
-    
+
     &.mat-mdc-option-disabled {
       .mdc-list-item__primary-text {
         color: rgba(255, 255, 255, 0.38) !important;
@@ -324,16 +326,16 @@ button[mat-fab][extended][disabled] {
 .cdk-overlay-pane {
   .mat-mdc-select-panel {
     margin-top: 4px !important;
-    
+
     &::-webkit-scrollbar {
       width: 8px;
       background: transparent;
     }
-    
+
     &::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 4px;
-      
+
       &:hover {
         background: rgba(255, 255, 255, 0.3);
       }
@@ -368,12 +370,14 @@ button[mat-fab][extended][disabled] {
       color: rgba(255, 255, 255, 0.6);
     }
 
-    .mdc-floating-label, .mdc-floating-label--float-above {
+    .mdc-floating-label,
+    .mdc-floating-label--float-above {
       color: rgba(255, 255, 255, 0.6) !important;
     }
 
     &.mat-focused {
-      .mdc-floating-label, .mdc-floating-label--float-above {
+      .mdc-floating-label,
+      .mdc-floating-label--float-above {
         color: #1976d2 !important;
       }
     }
@@ -386,14 +390,81 @@ button[mat-fab][extended][disabled] {
       .mat-mdc-form-field-ripple {
         background-color: #f44336;
       }
-      .mdc-floating-label, .mdc-floating-label--float-above {
+      .mdc-floating-label,
+      .mat-mdc-select-value-text,
+      .mat-mdc-select-arrow {
         color: #f44336 !important;
       }
     }
 
     &.mat-form-field-disabled {
-      .mdc-floating-label, .mat-mdc-select-value-text, .mat-mdc-select-arrow {
+      .mdc-floating-label,
+      .mat-mdc-select-value-text,
+      .mat-mdc-select-arrow {
         color: rgba(255, 255, 255, 0.38) !important;
+      }
+    }
+  }
+}
+
+// Mat-paginator custom styles
+.mat-mdc-paginator {
+  background-color: transparent !important;
+
+  .mat-mdc-paginator-container {
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  .mat-mdc-paginator-range-label,
+  .mat-mdc-select-value,
+  .mat-mdc-select-arrow {
+    color: rgba(255, 255, 255, 0.87);
+  }
+
+  button.mat-mdc-icon-button {
+    color: rgba(255, 255, 255, 0.87);
+    border-radius: 50%;
+    
+    svg.mat-mdc-paginator-icon {
+      fill: currentColor;
+      width: 24px;
+      height: 24px;
+    }
+
+    &.mat-mdc-button-disabled {
+      opacity: 0.38;
+      background-color: transparent !important;
+      pointer-events: none;
+      
+      svg.mat-mdc-paginator-icon {
+        fill: rgba(255, 255, 255, 0.38);
+      }
+    }
+
+    &:not(.mat-mdc-button-disabled) {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+      }
+
+      &:active {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+      }
+    }
+  }
+
+  .mat-mdc-select-disabled {
+    .mat-mdc-select-value,
+    .mat-mdc-select-arrow {
+      color: rgba(255, 255, 255, 0.38);
+    }
+  }
+
+  .mdc-text-field--outlined {
+    &:not(.mdc-text-field--disabled) {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(255, 255, 255, 0.2);
       }
     }
   }
