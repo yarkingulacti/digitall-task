@@ -389,10 +389,13 @@ button[mat-fab][extended][disabled] {
   }
 }
 
+// Mat-paginator theme customization
+.mat-mdc-paginator {
+  background-color: #0e1d33 !important;
+}
+
 // Mat-paginator custom styles
 .mat-mdc-paginator {
-  background-color: transparent !important;
-
   .mat-mdc-paginator-container {
     color: rgba(255, 255, 255, 0.87);
   }
