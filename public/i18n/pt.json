@@ -11,6 +11,15 @@
   "CREW_LIST.TABLE_HEADER.TOTAL_INCOME": "Renda Total",
   "CREW_LIST.TABLE_HEADER.ACTIONS": "Ações",
 
+  "CREW_LIST.TABLE_FOOTER.TOTAL_INCOME": "Renda Total",
+
+  "GLOBAL.LIST.TABLE_PAGE_SIZE.LABEL": "Itens por página",
+  "GLOBAL.LIST.TABLE_PAGING.PRIMEIRA_PAGINA_LABEL": "Primeira Página",
+  "GLOBAL.LIST.TABLE_PAGING.ULTIMA_PAGINA_LABEL": "Última Página",
+  "GLOBAL.LIST.TABLE_PAGING.LABEL": "{{start}}-{{end}} de {{total_count}}",
+  "GLOBAL.LIST.TABLE_PAGING.NEXT": "Próxima Página",
+  "GLOBAL.LIST.TABLE_PAGING.PREVIOUS": "Página Anterior",
+
   "CREW_LIST.TABLE_CELL.CERTIFICATES": "Possui {{count}} certificados",
   "CREW_LIST.TABLE_CELL.DAYS_ON_BOARD": "Permanece {{days}} dias a bordo",
 
@@ -56,13 +65,23 @@
   "ADD_CREW_MODAL.BREADCRUMB.MODULE": "Tripulação",
   "ADD_CREW_MODAL.BREADCRUMB.TITLE": "Adicionar Tripulação",
   "ADD_CREW_MODAL.FIRST_NAME": "Nome",
+  "ADD_CREW_MODAL.FIRST_NAME.REQUIRED": "O nome é obrigatório",
   "ADD_CREW_MODAL.LAST_NAME": "Sobrenome",
+  "ADD_CREW_MODAL.LAST_NAME.REQUIRED": "O sobrenome é obrigatório",
   "ADD_CREW_MODAL.NATIONALITY": "Nacionalidade",
+  "ADD_CREW_MODAL.NATIONALITY.REQUIRED": "A nacionalidade é obrigatória",
   "ADD_CREW_MODAL.TITLE": "Cargo",
+  "ADD_CREW_MODAL.TITLE.REQUIRED": "O cargo é obrigatório",
   "ADD_CREW_MODAL.CERTIFICATES": "Certificados",
+  "ADD_CREW_MODAL.CERTIFICATES.REQUIRED": "Pelo menos um certificado deve ser selecionado",
   "ADD_CREW_MODAL.DAYS_ON_BOARD": "Dias a Bordo",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.REQUIRED": "Os dias a bordo são obrigatórios",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.MIN": "Os dias a bordo devem ser 0 ou maior",
   "ADD_CREW_MODAL.DAILY_RATE": "Taxa Diária",
+  "ADD_CREW_MODAL.DAILY_RATE.REQUIRED": "A taxa diária é obrigatória",
+  "ADD_CREW_MODAL.DAILY_RATE.MIN": "A taxa diária deve ser 0 ou maior",
   "ADD_CREW_MODAL.CURRENCY": "Moeda",
+  "ADD_CREW_MODAL.CURRENCY.REQUIRED": "A moeda é obrigatória",
   "ADD_CREW_MODAL.FOOTER.CANCEL": "Cancelar",
   "ADD_CREW_MODAL.FOOTER.SUBMIT": "Adicionar",
 
@@ -233,6 +252,6 @@
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.TEXT": "Ocorreu um erro ao excluir o tipo de certificado. {{error}}",
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.OK": "OK",
 
-  "FOOTER.DEVELOPED_BY": "Desenvolvido com amor por {{author}}!",
+  "FOOTER.DEVELOPED_BY": "Desenvolvido com amor ❤️ por {{author}}!",
   "FOOTER.COPYRIGHT": "Todos os direitos reservados 2025"
 }

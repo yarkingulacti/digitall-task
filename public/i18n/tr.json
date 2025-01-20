@@ -11,6 +11,15 @@
   "CREW_LIST.TABLE_HEADER.TOTAL_INCOME": "Toplam Gelir",
   "CREW_LIST.TABLE_HEADER.ACTIONS": "İşlemler",
 
+  "CREW_LIST.TABLE_FOOTER.TOTAL_INCOME": "Toplam Gelir",
+
+  "GLOBAL.LIST.TABLE_PAGE_SIZE.LABEL": "Sayfa Boyutu",
+  "GLOBAL.LIST.TABLE_PAGING.FIRST_PAGE_LABEL": "İlk Sayfa",
+  "GLOBAL.LIST.TABLE_PAGING.LAST_PAGE_LABEL": "Son Sayfa",
+  "GLOBAL.LIST.TABLE_PAGING.LABEL": "{{start}}-{{end}} / {{total_count}}",
+  "GLOBAL.LIST.TABLE_PAGING.NEXT": "Sonraki Sayfa",
+  "GLOBAL.LIST.TABLE_PAGING.PREVIOUS": "Önceki Sayfa",
+
   "CREW_LIST.TABLE_CELL.CERTIFICATES": "{{count}} tane sertifikası mevcut",
   "CREW_LIST.TABLE_CELL.DAYS_ON_BOARD": "{{days}} gün gemide kalıyor",
 
@@ -22,6 +31,9 @@
   "DASHBOARD.ADD_CREW.SUCCESS.TITLE": "Tayfa Eklendi",
   "DASHBOARD.ADD_CREW.SUCCESS.TEXT": "Tayfa başarıyla eklendi.",
   "DASHBOARD.ADD_CREW.SUCCESS.OK": "Tamam",
+
+  "DASHBOARD.ADD_CREW.ERRORS.SLUG_EXISTS": "Tayfa zaten mevcut",
+  "CREW_LIST.UPDATE_CREW.ERRORS.SLUG_EXISTS": "Tayfa zaten mevcut",
 
   "DASHBOARD.ADD_CREW.ERROR.TITLE": "Tayfa Eklenemedi",
   "DASHBOARD.ADD_CREW.ERROR.TEXT": "Tayfa eklenecek tayfa bilgileri eksik. {{error}}",
@@ -56,13 +68,23 @@
   "ADD_CREW_MODAL.BREADCRUMB.MODULE": "Tayfa",
   "ADD_CREW_MODAL.BREADCRUMB.TITLE": "Tayfa Ekle",
   "ADD_CREW_MODAL.FIRST_NAME": "Ad",
+  "ADD_CREW_MODAL.FIRST_NAME.REQUIRED": "Ad alanı zorunludur",
   "ADD_CREW_MODAL.LAST_NAME": "Soyad",
+  "ADD_CREW_MODAL.LAST_NAME.REQUIRED": "Soyad alanı zorunludur",
   "ADD_CREW_MODAL.NATIONALITY": "Ülke",
+  "ADD_CREW_MODAL.NATIONALITY.REQUIRED": "Ülke alanı zorunludur",
   "ADD_CREW_MODAL.TITLE": "Görev Tanımı",
+  "ADD_CREW_MODAL.TITLE.REQUIRED": "Görev tanımı alanı zorunludur",
   "ADD_CREW_MODAL.CERTIFICATES": "Sertifikalar",
+  "ADD_CREW_MODAL.CERTIFICATES.REQUIRED": "En az bir sertifika seçilmelidir",
   "ADD_CREW_MODAL.DAYS_ON_BOARD": "Gemide Kalma Süresi",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.REQUIRED": "Gemide kalma süresi alanı zorunludur",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.MIN": "Gemide kalma süresi 0 veya daha büyük olmalıdır",
   "ADD_CREW_MODAL.DAILY_RATE": "Günlük Ücret",
+  "ADD_CREW_MODAL.DAILY_RATE.REQUIRED": "Günlük ücret alanı zorunludur",
+  "ADD_CREW_MODAL.DAILY_RATE.MIN": "Günlük ücret 0 veya daha büyük olmalıdır",
   "ADD_CREW_MODAL.CURRENCY": "Para Birimi",
+  "ADD_CREW_MODAL.CURRENCY.REQUIRED": "Para birimi alanı zorunludur",
   "ADD_CREW_MODAL.FOOTER.CANCEL": "İptal Et",
   "ADD_CREW_MODAL.FOOTER.SUBMIT": "Ekle",
 
@@ -233,6 +255,6 @@
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.TEXT": "Sertifika tipi silinirken bir hata oluştu. {{error}}",
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.OK": "Tamam",
 
-  "FOOTER.DEVELOPED_BY": "{{author}} tarafından sevgi katılarak geliştirildi!",
-  "FOOTER.COPYRIGHT": "Tüm hakları saklıdır © 2025"
+  "FOOTER.DEVELOPED_BY": "{{author}} tarafından sevgi katılarak ❤️ geliştirildi!",
+  "FOOTER.COPYRIGHT": "Tüm hakları saklıdır 2025"
 }

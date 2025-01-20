@@ -7,7 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { CertificateService } from '../../certificate-service.service';
-import { CrewMemberCertificate } from '../../../crew';
+import { Certificate } from '../../../crew';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -16,13 +17,14 @@ import { CrewMemberCertificate } from '../../../crew';
     MatButtonModule,
     MatIcon,
     DatePipe,
+    TranslateModule,
   ],
   selector: 'component-certificate-list',
   templateUrl: './certificate-list.component.html',
   styleUrls: ['./certificate-list.component.scss'],
 })
 export class CertificateListComponent implements AfterViewInit {
-  public dataSource = new MatTableDataSource<CrewMemberCertificate>([]);
+  public dataSource = new MatTableDataSource<Certificate>([]);
   public displayedColumns: string[] = [
     'title',
     'description',
@@ -36,7 +38,8 @@ export class CertificateListComponent implements AfterViewInit {
 
   constructor(
     private certificateService: CertificateService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
     this.certificateService.certificates$.subscribe((data) => {
       this.dataSource.data = [...data];
@@ -57,17 +60,22 @@ export class CertificateListComponent implements AfterViewInit {
 
   onDeleteClick(id: string) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.TITLE'),
+      text: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.TEXT'),
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.SUBMIT'),
+      cancelButtonText: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.CANCEL'),
     }).then((result) => {
       if (result.isConfirmed) {
         this.certificateService.deleteCertificate(id);
-        Swal.fire('Deleted!', 'Certificate has been deleted.', 'success');
+        Swal.fire(
+          this.translate.instant('CERTIFICATE_LIST.DELETE_SUCCESS.TITLE'),
+          this.translate.instant('CERTIFICATE_LIST.DELETE_SUCCESS.TEXT'),
+          'success'
+        );
       }
     });
   }

@@ -2,11 +2,11 @@ import { AfterViewInit, Component, computed, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { CrewMember } from '../../../crew';
-import { CrewServiceService } from '../../crew-service.service';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import Swal from 'sweetalert2';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Crew } from '../../../crew';
+import { CrewServiceService } from '../../crew-service.service';
 
 @Component({
   imports: [
@@ -17,13 +17,14 @@ import Swal from 'sweetalert2';
     MatPaginatorModule,
     MatButtonModule,
     MatIcon,
+    TranslateModule,
   ],
   selector: 'component-crew-list',
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss',
 })
 export class CrewListComponent implements AfterViewInit {
-  public dataSource = new MatTableDataSource<CrewMember>([]);
+  public dataSource = new MatTableDataSource<Crew>([]);
   public displayedColumns: string[] = [
     'first_name',
     'last_name',
@@ -39,7 +40,7 @@ export class CrewListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private crewService: CrewServiceService, private router: Router) {
+  constructor(private crewService: CrewServiceService, private router: Router, private translate: TranslateService) {
     this.crewService.crewMembers$.subscribe((data) => {
       this.dataSource.data = [...data];
     });
@@ -63,6 +64,15 @@ export class CrewListComponent implements AfterViewInit {
     )
   );
 
+  translateRangeLabel = (page: number, pageSize: number, length: number) => {
+    if (length === 0) {
+      return '0 / ' + length;
+    }
+    const start = page * pageSize + 1;
+    const end = Math.min((page + 1) * pageSize, length);
+    return this.translate.instant('CREW_LIST.TABLE_PAGING.LABEL', { start, end, total_count: length });
+  };
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -75,24 +85,7 @@ export class CrewListComponent implements AfterViewInit {
     this.router.navigate([{ outlets: { modal: ['crew', slug, 'edit'] } }]);
   }
 
-  deleteCrew(slug: string) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Crew member has been deleted.', 'success');
-        this.deleteCrewConfirm(slug);
-      }
-    });
-  }
-
-  deleteCrewConfirm(slug: string) {
+  async deleteCrew(slug: string) {
     this.crewService.deleteCrew(slug);
   }
 

@@ -14,15 +14,12 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 import { CrewServiceService } from '../../crew-service.service';
-import {
-  CrewMember,
-  CrewMemberCertificate,
-  CrewMemberTitle,
-} from '../../../crew';
+import { Crew, Certificate, CrewTitle } from '../../../crew';
 import titles from '../../../title-data';
 import { CertificateService } from '../../certificate-service.service';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   imports: [
@@ -34,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     CommonModule,
     MatDialogModule,
+    TranslateModule,
   ],
   selector: 'app-crew-create',
   templateUrl: './create.component.html',
@@ -41,8 +39,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class CrewCreateComponent implements OnInit {
   crewForm: FormGroup;
-  titles: CrewMemberTitle[] = titles;
-  crewCertificates: CrewMemberCertificate[] = [];
+  titles: CrewTitle[] = titles;
+  crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
@@ -70,7 +68,7 @@ export class CrewCreateComponent implements OnInit {
   onSubmit() {
     if (this.crewForm.valid) {
       const formValue = this.crewForm.value;
-      const newCrew: CrewMember = {
+      const newCrew: Crew = {
         ...formValue,
         id: uuidv4(),
         certificates: formValue.certificate,

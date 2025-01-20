@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CertificateService } from '../../certificate-service.service';
-import { CrewMemberCertificate } from '../../../crew';
+import { Certificate } from '../../../crew';
 import Swal from 'sweetalert2';
 import {
   CertificateType,
@@ -22,6 +22,7 @@ import {
 } from '../../certificate-type-service.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -35,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    TranslateModule,
   ],
   selector: 'app-crew-certificate-create',
   templateUrl: './create.component.html',
@@ -63,7 +65,7 @@ export class CrewCertificateCreateComponent {
   onSubmit() {
     if (this.certificateForm.valid) {
       const formValue = this.certificateForm.value;
-      const certificate: CrewMemberCertificate = {
+      const certificate: Certificate = {
         id: crypto.randomUUID(),
         type: formValue.type,
         ...formValue,

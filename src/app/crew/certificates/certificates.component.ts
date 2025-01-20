@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CrewMember, CrewMemberCertificate } from '../../../crew';
+import { Crew, Certificate } from '../../../crew';
 import { CrewServiceService } from '../../crew-service.service';
 
 @Component({
@@ -15,8 +15,8 @@ import { CrewServiceService } from '../../crew-service.service';
   imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule],
 })
 export class CrewCertificatesComponent implements OnInit {
-  crewMember: CrewMember | null = null;
-  dataSource = new MatTableDataSource<CrewMemberCertificate>([]);
+  crewMember: Crew | null = null;
+  dataSource = new MatTableDataSource<Certificate>([]);
   displayedColumns: string[] = [
     'title',
     'type',

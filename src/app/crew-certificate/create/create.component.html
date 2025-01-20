@@ -6,9 +6,9 @@
       class="flex items-center justify-between pb-4 border-b border-white/10"
     >
       <div class="flex items-center gap-2">
-        <span class="text-white text-opacity-60">Certificates</span>
+        <span class="text-white text-opacity-60">{{ 'CERTIFICATES.ADD_CERTIFICATE' | translate }}</span>
         <span class="text-white text-opacity-40 mx-2">></span>
-        <span class="text-white text-opacity-60">Create Certificate</span>
+        <span class="text-white text-opacity-60">{{ 'ADD_CERTIFICATE_MODAL.BREADCRUMB.TITLE' | translate }}</span>
       </div>
       <button
         mat-icon-button
@@ -25,54 +25,54 @@
       class="flex flex-col gap-4 mt-6"
     >
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ 'ADD_CERTIFICATE_MODAL.TITLE' | translate }}</mat-label>
         <input
           matInput
           formControlName="title"
           required
-          placeholder="Enter title"
+          placeholder="{{ 'ADD_CERTIFICATE_MODAL.TITLE' | translate }}"
         />
         <mat-error *ngIf="certificateForm.get('title')?.hasError('required')">
-          Title is required
+          {{ 'ADD_CERTIFICATE_MODAL.TITLE' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ 'ADD_CERTIFICATE_MODAL.DESCRIPTION' | translate }}</mat-label>
         <textarea
           matInput
           formControlName="description"
           required
           rows="4"
-          placeholder="Enter description"
+          placeholder="{{ 'ADD_CERTIFICATE_MODAL.DESCRIPTION' | translate }}"
         ></textarea>
         <mat-error
           *ngIf="certificateForm.get('description')?.hasError('required')"
         >
-          Description is required
+          {{ 'ADD_CERTIFICATE_MODAL.DESCRIPTION' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Type</mat-label>
+        <mat-label>{{ 'ADD_CERTIFICATE_MODAL.TYPE' | translate }}</mat-label>
         <mat-select formControlName="type" required>
           <mat-option *ngFor="let type of certificateTypes" [value]="type">
             {{ type.title }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="certificateForm.get('type')?.hasError('required')">
-          Type is required
+          {{ 'ADD_CERTIFICATE_MODAL.TYPE' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Issue Date</mat-label>
+        <mat-label>{{ 'ADD_CERTIFICATE_MODAL.ISSUE_DATE' | translate }}</mat-label>
         <input
           matInput
           [matDatepicker]="issuePicker"
           formControlName="issue_date"
           required
-          placeholder="Choose a date"
+          placeholder="{{ 'ADD_CERTIFICATE_MODAL.ISSUE_DATE' | translate }}"
         />
         <mat-datepicker-toggle
           matIconSuffix
@@ -82,17 +82,17 @@
         <mat-error
           *ngIf="certificateForm.get('issue_date')?.hasError('required')"
         >
-          Issue date is required
+          {{ 'ADD_CERTIFICATE_MODAL.ISSUE_DATE' | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Expiration Date</mat-label>
+        <mat-label>{{ 'ADD_CERTIFICATE_MODAL.EXPIRY_DATE' | translate }}</mat-label>
         <input
           matInput
           [matDatepicker]="expirationPicker"
           formControlName="expiration_date"
-          placeholder="Choose a date"
+          placeholder="{{ 'ADD_CERTIFICATE_MODAL.EXPIRY_DATE' | translate }}"
         />
         <mat-datepicker-toggle
           matIconSuffix
@@ -110,7 +110,7 @@
           class="bg-white/10 text-white hover:bg-white/20"
         >
           <mat-icon>close</mat-icon>
-          Cancel
+          {{ 'ADD_CERTIFICATE_MODAL.FOOTER.CANCEL' | translate }}
         </button>
         <button
           mat-fab
@@ -120,7 +120,7 @@
           class="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-white/10 disabled:text-white/30"
         >
           <mat-icon>add</mat-icon>
-          Create
+          {{ 'ADD_CERTIFICATE_MODAL.FOOTER.SUBMIT' | translate }}
         </button>
       </div>
     </form>

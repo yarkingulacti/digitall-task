@@ -11,6 +11,15 @@
   "CREW_LIST.TABLE_HEADER.TOTAL_INCOME": "Total Income",
   "CREW_LIST.TABLE_HEADER.ACTIONS": "Actions",
 
+  "CREW_LIST.TABLE_FOOTER.TOTAL_INCOME": "Total Income",
+
+  "GLOBAL.LIST.TABLE_PAGE_SIZE.LABEL": "Items per page",
+  "GLOBAL.LIST.TABLE_PAGING.FIRST_PAGE_LABEL": "First Page",
+  "GLOBAL.LIST.TABLE_PAGING.LAST_PAGE_LABEL": "Last Page",
+  "GLOBAL.LIST.TABLE_PAGING.LABEL": "{{start}}-{{end}} of {{total_count}}",
+  "GLOBAL.LIST.TABLE_PAGING.NEXT": "Next Page",
+  "GLOBAL.LIST.TABLE_PAGING.PREVIOUS": "Previous Page",
+
   "CREW_LIST.TABLE_CELL.CERTIFICATES": "Has {{count}} certificates",
   "CREW_LIST.TABLE_CELL.DAYS_ON_BOARD": "Stays {{days}} days on board",
 
@@ -56,13 +65,23 @@
   "ADD_CREW_MODAL.BREADCRUMB.MODULE": "Crew",
   "ADD_CREW_MODAL.BREADCRUMB.TITLE": "Add Crew",
   "ADD_CREW_MODAL.FIRST_NAME": "First Name",
+  "ADD_CREW_MODAL.FIRST_NAME.REQUIRED": "First name is required",
   "ADD_CREW_MODAL.LAST_NAME": "Last Name",
+  "ADD_CREW_MODAL.LAST_NAME.REQUIRED": "Last name is required",
   "ADD_CREW_MODAL.NATIONALITY": "Nationality",
+  "ADD_CREW_MODAL.NATIONALITY.REQUIRED": "Nationality is required",
   "ADD_CREW_MODAL.TITLE": "Job Title",
+  "ADD_CREW_MODAL.TITLE.REQUIRED": "Title is required",
   "ADD_CREW_MODAL.CERTIFICATES": "Certificates",
+  "ADD_CREW_MODAL.CERTIFICATES.REQUIRED": "At least one certificate must be selected",
   "ADD_CREW_MODAL.DAYS_ON_BOARD": "Days on Board",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.REQUIRED": "Days on board is required",
+  "ADD_CREW_MODAL.DAYS_ON_BOARD.MIN": "Days on board must be 0 or greater",
   "ADD_CREW_MODAL.DAILY_RATE": "Daily Rate",
+  "ADD_CREW_MODAL.DAILY_RATE.REQUIRED": "Daily rate is required",
+  "ADD_CREW_MODAL.DAILY_RATE.MIN": "Daily rate must be 0 or greater",
   "ADD_CREW_MODAL.CURRENCY": "Currency",
+  "ADD_CREW_MODAL.CURRENCY.REQUIRED": "Currency is required",
   "ADD_CREW_MODAL.FOOTER.CANCEL": "Cancel",
   "ADD_CREW_MODAL.FOOTER.SUBMIT": "Add",
 
@@ -233,6 +252,6 @@
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.TEXT": "An error occurred while deleting the certificate type. {{error}}",
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.OK": "OK",
 
-  "FOOTER.DEVELOPED_BY": "{{author}} developed with love!",
+  "FOOTER.DEVELOPED_BY": "{{author}} developed with love ❤️!",
   "FOOTER.COPYRIGHT": "All rights reserved 2025"
 }

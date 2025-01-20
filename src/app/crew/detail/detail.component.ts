@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CrewMember } from '../../../crew';
+import { Crew } from '../../../crew';
 import { CrewServiceService } from '../../crew-service.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { CrewServiceService } from '../../crew-service.service';
   styleUrls: ['./detail.component.scss'],
 })
 export class CrewDetailComponent implements OnInit {
-  crewMember: CrewMember | undefined;
+  crewMember: Crew | undefined;
 
   constructor(
     private crewService: CrewServiceService,

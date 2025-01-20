@@ -262,8 +262,6 @@ button[mat-fab][extended][disabled] {
 
 // Material Select Custom Styles
 .mat-mdc-select {
-  background-color: rgba(255, 255, 255, 0.1);
-
   .mat-mdc-select-value {
     color: rgba(255, 255, 255, 0.87);
   }
@@ -424,7 +422,7 @@ button[mat-fab][extended][disabled] {
   button.mat-mdc-icon-button {
     color: rgba(255, 255, 255, 0.87);
     border-radius: 50%;
-    
+
     svg.mat-mdc-paginator-icon {
       fill: currentColor;
       width: 24px;
@@ -435,7 +433,7 @@ button[mat-fab][extended][disabled] {
       opacity: 0.38;
       background-color: transparent !important;
       pointer-events: none;
-      
+
       svg.mat-mdc-paginator-icon {
         fill: rgba(255, 255, 255, 0.38);
       }
@@ -468,4 +466,9 @@ button[mat-fab][extended][disabled] {
       }
     }
   }
+}
+
+.mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-checked::after,
+.mat-pseudo-checkbox-minimal.mat-pseudo-checkbox-indeterminate::after {
+  color: white !important;
 }

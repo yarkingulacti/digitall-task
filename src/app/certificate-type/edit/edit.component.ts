@@ -17,9 +17,9 @@ import {
 } from '../../certificate-type-service.service';
 import Swal from 'sweetalert2';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -28,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     CommonModule,
     MatDialogModule,
+    TranslateModule,
   ],
   selector: 'app-certificate-type-edit',
   templateUrl: './edit.component.html',
@@ -65,7 +66,7 @@ export class CertificateTypeEditComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.typeForm.valid) {
       const formValue = this.typeForm.value;
       const updatedType: CertificateType = {
@@ -73,7 +74,7 @@ export class CertificateTypeEditComponent implements OnInit {
         ...formValue,
       };
 
-      const success = this.certificateTypeService.editCertificateType(
+      const success = await this.certificateTypeService.editCertificateType(
         this.typeId,
         updatedType
       );

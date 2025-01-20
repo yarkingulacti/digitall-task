@@ -1,4 +1,45 @@
 <main class="flex flex-col bg-[#0e1d33] w-screen h-screen overflow-hidden">
+  <div class="self-end w-48 inline-block flex-shrink mt-6 mr-9">
+    <mat-select
+      [(ngModel)]="appLanguage"
+      (selectionChange)="translate.use($event.value)"
+      class="bg-[#1a2942] text-white shadow-md rounded-lg border border-gray-600/50 shadow-lg"
+      panelClass="dark-theme-select"
+    >
+      <mat-select-trigger>
+        <div class="flex items-center gap-3 px-3 py-1.5">
+          <img
+            [src]="
+              'https://flagcdn.com/24x18/' +
+              (appLanguage === 'en' ? 'gb' : appLanguage) +
+              '.png'
+            "
+            [alt]="getSelectedLanguage()?.name"
+            class="w-6 h-4 object-cover rounded shadow-sm"
+          />
+          <span class="text-sm font-medium">{{
+            getSelectedLanguage()?.name
+          }}</span>
+        </div>
+      </mat-select-trigger>
+      <mat-option
+        *ngFor="let lang of languages"
+        [value]="lang.code"
+        class="flex items-center gap-3 text-white hover:bg-[#2a3b57] px-3 py-2"
+      >
+        <img
+          [src]="
+            'https://flagcdn.com/24x18/' +
+            (lang.code === 'en' ? 'gb' : lang.code) +
+            '.png'
+          "
+          [alt]="lang.name"
+          class="w-6 h-4 object-cover rounded shadow-sm"
+        />
+        <span class="text-sm font-medium">{{ lang.name }}</span>
+      </mat-option>
+    </mat-select>
+  </div>
   <div class="flex flex-1 overflow-hidden">
     <layout-sidebar />
     <div class="flex-1 ml-3 overflow-auto">

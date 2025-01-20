@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CertificateService } from '../../certificate-service.service';
-import { CrewMemberCertificate } from '../../../crew';
+import { Certificate } from '../../../crew';
 import Swal from 'sweetalert2';
 import {
   CertificateType,
@@ -22,6 +22,7 @@ import {
 } from '../../certificate-type-service.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -35,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    TranslateModule,
   ],
   selector: 'app-crew-certificate-edit',
   templateUrl: './edit.component.html',
@@ -128,7 +130,7 @@ export class CrewCertificateEditComponent implements OnInit {
       }
 
       const formValue = this.certificateForm.value;
-      const updatedCertificate: CrewMemberCertificate = {
+      const updatedCertificate: Certificate = {
         id: this.certificateId,
         title: formValue.title,
         description: formValue.description,

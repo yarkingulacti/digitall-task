@@ -14,14 +14,11 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import slugify from 'slugify';
 import { CrewServiceService } from '../../crew-service.service';
-import {
-  CrewMember,
-  CrewMemberCertificate,
-  CrewMemberTitle,
-} from '../../../crew';
+import { Crew, Certificate, CrewTitle } from '../../../crew';
 import titles from '../../../title-data';
 import { CertificateService } from '../../certificate-service.service';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -33,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     CommonModule,
     MatDialogModule,
+    TranslateModule,
   ],
   selector: 'app-crew-edit',
   templateUrl: './edit.component.html',
@@ -40,9 +38,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class CrewEditComponent implements OnInit {
   crewForm: FormGroup;
-  crewMember: CrewMember | undefined;
-  titles: CrewMemberTitle[] = titles;
-  crewCertificates: CrewMemberCertificate[] = [];
+  crewMember: Crew | undefined;
+  titles: CrewTitle[] = titles;
+  crewCertificates: Certificate[] = [];
   currencies = ['USD', 'EUR', 'GBP'];
 
   constructor(
@@ -81,7 +79,7 @@ export class CrewEditComponent implements OnInit {
   onSubmit() {
     if (this.crewForm.valid && this.crewMember) {
       const formValue = this.crewForm.value;
-      const updatedCrew: CrewMember = {
+      const updatedCrew: Crew = {
         ...this.crewMember,
         ...formValue,
         certificates: formValue.certificate,

@@ -6,9 +6,13 @@
       class="flex items-center justify-between pb-4 border-b border-white/10"
     >
       <div class="flex items-center gap-2">
-        <span class="text-white text-opacity-60">Crew</span>
+        <span class="text-white text-opacity-60">{{
+          "ADD_CREW_MODAL.BREADCRUMB.MODULE" | translate
+        }}</span>
         <span class="text-white text-opacity-40 mx-2">></span>
-        <span class="text-white text-opacity-60">Create Member</span>
+        <span class="text-white text-opacity-60">{{
+          "ADD_CREW_MODAL.BREADCRUMB.TITLE" | translate
+        }}</span>
       </div>
       <button
         mat-icon-button
@@ -25,58 +29,58 @@
       class="flex flex-col gap-4 mt-6"
     >
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>First Name</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.FIRST_NAME" | translate }}</mat-label>
         <input
           matInput
           formControlName="first_name"
           required
-          placeholder="Enter first name"
+          placeholder="{{ 'ADD_CREW_MODAL.FIRST_NAME' | translate }}"
         />
         <mat-error *ngIf="crewForm.get('first_name')?.hasError('required')">
-          First name is required
+          {{ "ADD_CREW_MODAL.FIRST_NAME.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Last Name</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.LAST_NAME" | translate }}</mat-label>
         <input
           matInput
           formControlName="last_name"
           required
-          placeholder="Enter last name"
+          placeholder="{{ 'ADD_CREW_MODAL.LAST_NAME' | translate }}"
         />
         <mat-error *ngIf="crewForm.get('last_name')?.hasError('required')">
-          Last name is required
+          {{ "ADD_CREW_MODAL.LAST_NAME.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Nationality</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.NATIONALITY" | translate }}</mat-label>
         <input
           matInput
           formControlName="nationality"
           required
-          placeholder="Enter nationality"
+          placeholder="{{ 'ADD_CREW_MODAL.NATIONALITY' | translate }}"
         />
         <mat-error *ngIf="crewForm.get('nationality')?.hasError('required')">
-          Nationality is required
+          {{ "ADD_CREW_MODAL.NATIONALITY.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.TITLE" | translate }}</mat-label>
         <mat-select formControlName="title">
           <mat-option *ngFor="let title of titles" [value]="title">
             {{ title.name }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="crewForm.get('title')?.hasError('required')">
-          Title is required
+          {{ "ADD_CREW_MODAL.TITLE.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Certificate</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.CERTIFICATES" | translate }}</mat-label>
         <mat-select formControlName="certificate" multiple>
           <mat-option
             *ngFor="let certificate of crewCertificates"
@@ -86,76 +90,64 @@
           </mat-option>
         </mat-select>
         <mat-error *ngIf="crewForm.get('certificate')?.hasError('required')">
-          Certificate is required
+          {{ "ADD_CREW_MODAL.CERTIFICATES.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Days on Board</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.DAYS_ON_BOARD" | translate }}</mat-label>
         <input
           matInput
           type="number"
           formControlName="days_on_board"
           required
-          placeholder="Enter days on board"
+          placeholder="{{ 'ADD_CREW_MODAL.DAYS_ON_BOARD' | translate }}"
         />
         <mat-error *ngIf="crewForm.get('days_on_board')?.hasError('required')">
-          Days on board is required
+          {{ "ADD_CREW_MODAL.DAYS_ON_BOARD.REQUIRED" | translate }}
         </mat-error>
         <mat-error *ngIf="crewForm.get('days_on_board')?.hasError('min')">
-          Days on board must be 0 or greater
+          {{ "ADD_CREW_MODAL.DAYS_ON_BOARD.MIN" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Daily Rate</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.DAILY_RATE" | translate }}</mat-label>
         <input
           matInput
           type="number"
           formControlName="daily_rate"
           required
-          placeholder="Enter daily rate"
+          placeholder="{{ 'ADD_CREW_MODAL.DAILY_RATE' | translate }}"
         />
         <mat-error *ngIf="crewForm.get('daily_rate')?.hasError('required')">
-          Daily rate is required
+          {{ "ADD_CREW_MODAL.DAILY_RATE.REQUIRED" | translate }}
         </mat-error>
         <mat-error *ngIf="crewForm.get('daily_rate')?.hasError('min')">
-          Daily rate must be 0 or greater
+          {{ "ADD_CREW_MODAL.DAILY_RATE.MIN" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Currency</mat-label>
+        <mat-label>{{ "ADD_CREW_MODAL.CURRENCY" | translate }}</mat-label>
         <mat-select formControlName="currency">
           <mat-option *ngFor="let currency of currencies" [value]="currency">
             {{ currency }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="crewForm.get('currency')?.hasError('required')">
-          Currency is required
+          {{ "ADD_CREW_MODAL.CURRENCY.REQUIRED" | translate }}
         </mat-error>
       </mat-form-field>
 
-      <div class="flex justify-end items-center gap-4 mt-6">
-        <button
-          mat-fab
-          extended
-          type="button"
-          (click)="onCancel()"
-          class="bg-white/10 text-white hover:bg-white/20"
-        >
+      <div class="flex justify-end gap-4 mt-4">
+        <button mat-fab extended type="button" (click)="closeModal()">
           <mat-icon>close</mat-icon>
-          Cancel
+          {{ "ADD_CREW_MODAL.FOOTER.CANCEL" | translate }}
         </button>
-        <button
-          mat-fab
-          extended
-          type="submit"
-          [disabled]="!crewForm.valid"
-          class="bg-blue-600 text-white hover:bg-blue-700 disabled:bg-white/10 disabled:text-white/30"
-        >
+        <button mat-fab extended type="submit" [disabled]="!crewForm.valid">
           <mat-icon>add</mat-icon>
-          Create
+          {{ "ADD_CREW_MODAL.FOOTER.SUBMIT" | translate }}
         </button>
       </div>
     </form>

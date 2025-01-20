@@ -11,10 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CertificateTypeService } from '../../certificate-type-service.service';
-import { CertificateType } from '../../../crew';
 import Swal from 'sweetalert2';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
+import { CertificateTypeService } from '../../certificate-type-service.service';
 
 @Component({
   imports: [
@@ -25,11 +25,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     CommonModule,
     MatDialogModule,
+    TranslateModule,
   ],
   selector: 'app-certificate-type-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  standalone: true,
 })
 export class CertificateTypeCreateComponent {
   typeForm: FormGroup;
@@ -45,10 +45,10 @@ export class CertificateTypeCreateComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.typeForm.valid) {
       const formValue = this.typeForm.value;
-      const success = this.certificateTypeService.createCertificateType({
+      const success = await this.certificateTypeService.createCertificateType({
         title: formValue.title,
         description: formValue.description,
       });

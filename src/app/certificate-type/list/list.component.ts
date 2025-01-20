@@ -3,11 +3,11 @@ import { Router, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIcon } from '@angular/material/icon';
+import Swal from 'sweetalert2';
 import { MatButtonModule } from '@angular/material/button';
 import { CertificateType } from '../../../crew';
-import { certificateTypes } from '../../../certificate-types-data';
-import Swal from 'sweetalert2';
 import { CertificateTypeService } from '../../certificate-type-service.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -16,6 +16,7 @@ import { CertificateTypeService } from '../../certificate-type-service.service';
     MatPaginatorModule,
     MatButtonModule,
     MatIcon,
+    TranslateModule,
   ],
   selector: 'app-certificate-type-list',
   templateUrl: './list.component.html',
@@ -59,19 +60,6 @@ export class CertificateTypeListComponent implements AfterViewInit {
   }
 
   deleteCertificateType(id: string) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.certificateTypeService.deleteCertificateType(id);
-        Swal.fire('Deleted!', 'Certificate type has been deleted.', 'success');
-      }
-    });
+    this.certificateTypeService.deleteCertificateType(id);
   }
 }
