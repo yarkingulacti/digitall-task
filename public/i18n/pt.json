@@ -1,5 +1,10 @@
 {
   "DASHBOARD.ADD_CREW": "Adicionar Tripulação",
+
+  "SIDEBAR.DASHBOARD": "Painel",
+  "SIDEBAR.CERTIFICATES": "Certificados",
+  "SIDEBAR.CERTIFICATE_TYPES": "Tipos de Certificados",
+
   "CREW_LIST.TABLE_HEADER.FIRST_NAME": "Nome",
   "CREW_LIST.TABLE_HEADER.LAST_NAME": "Sobrenome",
   "CREW_LIST.TABLE_HEADER.NATIONALITY": "Nacionalidade",

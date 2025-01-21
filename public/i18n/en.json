@@ -1,5 +1,10 @@
 {
   "DASHBOARD.ADD_CREW": "Add Crew",
+
+  "SIDEBAR.DASHBOARD": "Dashboard",
+  "SIDEBAR.CERTIFICATES": "Certificates",
+  "SIDEBAR.CERTIFICATE_TYPES": "Certificate Types",
+
   "CREW_LIST.TABLE_HEADER.FIRST_NAME": "First Name",
   "CREW_LIST.TABLE_HEADER.LAST_NAME": "Last Name",
   "CREW_LIST.TABLE_HEADER.NATIONALITY": "Nationality",
