@@ -30,6 +30,7 @@ export class DashboardComponent implements AfterViewInit {
     'last_name',
     'nationality',
     'title',
+    'certificates',
     'days_on_board',
     'daily_rate',
     'total_income',
