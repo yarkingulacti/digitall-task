@@ -53,15 +53,32 @@ export class DashboardComponent implements AfterViewInit {
     }).format(value);
   }
 
-  //TODO change this computed value to pipe every possible currency
-  public totalIncome = computed(() =>
-    new Intl.NumberFormat('en-US', {
+  public totalIncome = computed(() => {
+    const totals = this.dataSource.data.reduce((acc, crew) => {
+      if (!acc[crew.currency]) {
+        acc[crew.currency] = 0;
+      }
+      acc[crew.currency] += crew.total_income;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const formattedUSD = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    }).format(
-      this.dataSource.data.reduce((acc, crew) => acc + crew.total_income, 0)
-    )
-  );
+    }).format(totals['USD'] || 0);
+
+    const formattedEUR = new Intl.NumberFormat('de-DE', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(totals['EUR'] || 0);
+
+    const formattedGBP = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+    }).format(totals['GBP'] || 0);
+
+    return `${formattedUSD} | ${formattedEUR} | ${formattedGBP}`;
+  });
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
