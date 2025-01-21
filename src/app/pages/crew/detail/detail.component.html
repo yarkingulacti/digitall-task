@@ -3,16 +3,16 @@
     <h1 class="text-2xl text-white font-bold">
       {{ crew?.first_name }} {{ crew?.last_name }}
     </h1>
-    <span class="text-white/40">Details</span>
+    <span class="text-white/40">{{'CREW_DETAIL.BREADCRUMB.TITLE' | translate}}</span>
   </div>
 
   <mat-divider class="border-white/10"></mat-divider>
 
   <mat-tab-group class="crew-detail-tabs">
-    <mat-tab label="Details"
+    <mat-tab [label]="'CREW_DETAIL.TABS.DETAIL_TITLE' | translate"
       ><components-crew-detail></components-crew-detail
     ></mat-tab>
-    <mat-tab label="Certificates"
+    <mat-tab [label]="'CREW_DETAIL.TABS.CERTIFICATES_TITLE' | translate"
       ><components-crew-detail-certificates></components-crew-detail-certificates
     ></mat-tab>
   </mat-tab-group>

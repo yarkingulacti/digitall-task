@@ -6,6 +6,7 @@ import { CrewService } from '../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
 import { CrewDetailComponent as DetailComponent } from '../../../components/crew/detail/detail.component';
 import { CrewDetailCertificatesComponent } from '../../../components/crew/detail/certificates/certificates.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   imports: [
@@ -13,6 +14,7 @@ import { CrewDetailCertificatesComponent } from '../../../components/crew/detail
     MatTabsModule,
     DetailComponent,
     CrewDetailCertificatesComponent,
+    TranslateModule,
   ],
   selector: 'pages-crew-detail',
   templateUrl: './detail.component.html',

@@ -1,6 +1,6 @@
 <div class="h-screen flex flex-col p-6">
   <div class="flex items-center justify-end mb-3">
-    <button mat-fab extended (click)="router.navigate(['crew', 'create'])">
+    <button mat-fab extended (click)="router.navigate([{ outlets: { modal: ['crew', 'create'] } }])">
       <mat-icon>add</mat-icon>
       <span>{{ "DASHBOARD.ADD_CREW" | translate }}</span>
     </button>

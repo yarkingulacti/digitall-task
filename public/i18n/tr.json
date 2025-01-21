@@ -21,7 +21,15 @@
   "GLOBAL.LIST.TABLE_PAGING.PREVIOUS": "Önceki Sayfa",
 
   "CREW_LIST.TABLE_CELL.CERTIFICATES": "{{count}} tane sertifikası mevcut",
-  "CREW_LIST.TABLE_CELL.DAYS_ON_BOARD": "{{days}} gün gemide kalıyor",
+  "CREW_LIST.TABLE_CELL.DAYS_ON_BOARD": "{{days}} gündür gemide kalıyor",
+
+  "CREW_CERTIFICATES.BREADCRUMB.MODULE": "Tayfa",
+  "CREW_CERTIFICATES.BREADCRUMB.TITLE": "{{full_name}} Sertifikaları",
+  "CREW_CERTIFICATES.TABLE_HEADER.TITLE": "Başlık",
+  "CREW_CERTIFICATES.TABLE_HEADER.DESCRIPTION": "Açıklama",
+  "CREW_CERTIFICATES.TABLE_HEADER.TYPE": "Tip",
+  "CREW_CERTIFICATES.TABLE_HEADER.ISSUE_DATE": "Başlama Tarihi",
+  "CREW_CERTIFICATES.TABLE_HEADER.EXPIRY_DATE": "Bitiş Tarihi",
 
   "DASHBOARD.ADD_CREW.CONFIRMATION.TITLE": "Tayfa Ekle",
   "DASHBOARD.ADD_CREW.CONFIRMATION.TEXT": "Tayfa ekleme işlemini onaylıyor musunuz?",
@@ -52,7 +60,7 @@
   "CREW_LIST.UPDATE_CREW.ERROR.TEXT": "Tayfa güncellenirken bir hata oluştu. {{error}}",
   "CREW_LIST.UPDATE_CREW.ERROR.OK": "Tamam",
 
-  "CREW_LIST.DELETE_CREW.CONFIRMATION.TITLE": "Silmek istediginizden emin misiniz?",
+  "CREW_LIST.DELETE_CREW.CONFIRMATION.TITLE": "Silmek istediğinizden emin misiniz?",
   "CREW_LIST.DELETE_CREW.CONFIRMATION.TEXT": "Bu tayfayı silmek istediginizden emin misiniz?",
   "CREW_LIST.DELETE_CREW.CONFIRMATION.CANCEL": "İptal Et",
   "CREW_LIST.DELETE_CREW.CONFIRMATION.SUBMIT": "Sil",
@@ -91,12 +99,21 @@
   "EDIT_CREW_MODAL.BREADCRUMB.MODULE": "Tayfa",
   "EDIT_CREW_MODAL.BREADCRUMB.TITLE": "Tayfa Düzenle",
   "EDIT_CREW_MODAL.FIRST_NAME": "Ad",
+  "EDIT_CREW_MODAL.FIRST_NAME.REQUIRED": "Ad alanı zorunludur",
   "EDIT_CREW_MODAL.LAST_NAME": "Soyad",
+  "EDIT_CREW_MODAL.LAST_NAME.REQUIRED": "Soyad alanı zorunludur",
   "EDIT_CREW_MODAL.NATIONALITY": "Ülke",
+  "EDIT_CREW_MODAL.NATIONALITY.REQUIRED": "Ülke alanı zorunludur",
   "EDIT_CREW_MODAL.TITLE": "Görev Tanımı",
+  "EDIT_CREW_MODAL.TITLE.REQUIRED": "Görev tanımı alanı zorunludur",
   "EDIT_CREW_MODAL.CERTIFICATES": "Sertifikalar",
+  "EDIT_CREW_MODAL.CERTIFICATES.REQUIRED": "En az bir sertifika seçilmelidir",
   "EDIT_CREW_MODAL.DAYS_ON_BOARD": "Gemide Kalma Süresi",
+  "EDIT_CREW_MODAL.DAYS_ON_BOARD.REQUIRED": "Gemide kalma süresi alanı zorunludur",
+  "EDIT_CREW_MODAL.DAYS_ON_BOARD.MIN": "Gemide kalma süresi 0 veya daha büyük olmalıdır",
   "EDIT_CREW_MODAL.DAILY_RATE": "Günlük Ücret",
+  "EDIT_CREW_MODAL.DAILY_RATE.REQUIRED": "Günlük ücret alanı zorunludur",
+  "EDIT_CREW_MODAL.DAILY_RATE.MIN": "Günlük ücret 0 veya daha büyük olmalıdır",
   "EDIT_CREW_MODAL.CURRENCY": "Para Birimi",
   "EDIT_CREW_MODAL.FOOTER.CANCEL": "İptal Et",
   "EDIT_CREW_MODAL.FOOTER.SUBMIT": "Kaydet",
@@ -105,7 +122,7 @@
   "CREW_DETAIL.BREADCRUMB.TITLE": "Tayfa Detayları",
   "CREW_DETAIL.TABS.DETAIL_TITLE": "Detaylar",
   "CREW_DETAIL.TABS.CERTIFICATES_TITLE": "Sertifikalar",
-  "CREW_DETAIL.FIRST_NAME": "Ad",
+  "CREW_DETAIL.DETAILS.FIRST_NAME": "Ad",
   "CREW_DETAIL.DETAILS.LAST_NAME": "Soyad",
   "CREW_DETAIL.DETAILS.NATIONALITY": "Ülke",
   "CREW_DETAIL.DETAILS.TITLE": "Görev Tanımı",
@@ -164,7 +181,7 @@
   "CERTIFICATE_UPDATE_MODAL.UPDATE_CONFIRMATION.SUBMIT": "Güncelle",
 
   "CERTIFICATE_UPDATE_MODAL.UPDATE_SUCCESS.TITLE": "Sertifika Güncellendi",
-  "CERTIFICATE_UPDATE_MODAL.UPDATE_SUCCESS.TEXT": "Sertifika basemanız basarıyla güncellendi.",
+  "CERTIFICATE_UPDATE_MODAL.UPDATE_SUCCESS.TEXT": "Sertifika başarıyla güncellendi.",
   "CERTIFICATE_UPDATE_MODAL.UPDATE_SUCCESS.OK": "Tamam",
 
   "CERTIFICATE_UPDATE_MODAL.UPDATE_ERROR.TITLE": "Sertifika Güncellenemedi",
@@ -177,7 +194,7 @@
   "CERTIFICATE_LIST.DELETE_CONFIRMATION.SUBMIT": "Sil",
 
   "CERTIFICATE_LIST.DELETE_SUCCESS.TITLE": "Sertifika Silindi",
-  "CERTIFICATE_LIST.DELETE_SUCCESS.TEXT": "Sertifika basemanız basarıyla silindi.",
+  "CERTIFICATE_LIST.DELETE_SUCCESS.TEXT": "Sertifika başarıyla silindi.",
   "CERTIFICATE_LIST.DELETE_SUCCESS.OK": "Tamam",
 
   "CERTIFICATE_LIST.DELETE_ERROR.TITLE": "Sertifika Silinemedi",
@@ -215,7 +232,7 @@
   "ADD_CERTIFICATE_TYPE_MODAL.ADD_CONFIRMATION.SUBMIT": "Onayla",
 
   "ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.TITLE": "Sertifika Tipi Eklendi",
-  "ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.TEXT": "Sertifika tipi basarıyla eklendi.",
+  "ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.TEXT": "Sertifika tipi başarıyla eklendi.",
   "ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.OK": "Tamam",
 
   "ADD_CERTIFICATE_TYPE_MODAL.ADD_ERROR.TITLE": "Sertifika Tipi Eklenemedi",
@@ -235,7 +252,7 @@
   "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_CONFIRMATION.SUBMIT": "Güncelle",
 
   "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_SUCCESS.TITLE": "Sertifika Tipi Güncellendi",
-  "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_SUCCESS.TEXT": "Sertifika tipi basemanız basarıyla güncellendi.",
+  "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_SUCCESS.TEXT": "Sertifika tipi başarıyla güncellendi.",
   "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_SUCCESS.OK": "Tamam",
 
   "CERTIFICATE_TYPE_UPDATE_MODAL.UPDATE_ERROR.TITLE": "Sertifika Tipi Güncellenemedi",
@@ -248,7 +265,7 @@
   "CERTIFICATE_TYPES_LIST.DELETE_CONFIRMATION.SUBMIT": "Sil",
 
   "CERTIFICATE_TYPES_LIST.DELETE_SUCCESS.TITLE": "Sertifika Tipi Silindi",
-  "CERTIFICATE_TYPES_LIST.DELETE_SUCCESS.TEXT": "Sertifika tipi basemanız basarıyla silindi.",
+  "CERTIFICATE_TYPES_LIST.DELETE_SUCCESS.TEXT": "Sertifika tipi başarıyla silindi.",
   "CERTIFICATE_TYPES_LIST.DELETE_SUCCESS.OK": "Tamam",
 
   "CERTIFICATE_TYPES_LIST.DELETE_ERROR.TITLE": "Sertifika Tipi Silinemedi",

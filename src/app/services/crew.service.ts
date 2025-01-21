@@ -169,7 +169,7 @@ export class CrewService {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: await this.translateHelper.getTranslationByKey(
-        'CREW_LIST.DELETE_CREW.CONFIRMATION.CONFIRM_BUTTON'
+        'CREW_LIST.DELETE_CREW.CONFIRMATION.SUBMIT'
       ),
     }).then(async (result) => {
       if (result.isConfirmed) {

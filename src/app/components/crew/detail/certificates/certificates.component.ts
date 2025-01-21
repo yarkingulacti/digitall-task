@@ -3,12 +3,13 @@ import { Component } from '@angular/core';
 import { Crew } from '../../../../../data/types';
 import { CrewService } from '../../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   selector: 'components-crew-detail-certificates',
   templateUrl: './certificates.component.html',
-  styleUrl: './certificates.component.scss',
+  styleUrls: ['./certificates.component.scss'],
 })
 export class CrewDetailCertificatesComponent {
   public crew: Crew | undefined;
