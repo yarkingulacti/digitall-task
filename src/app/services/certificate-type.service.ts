@@ -93,10 +93,27 @@ export class CertificateTypeService {
           title: await this.translateHelper.getTranslationByKey(
             'ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.TITLE'
           ),
+          text: await this.translateHelper.getTranslationByKey(
+            'ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.TEXT'
+          ),
+          confirmButtonText: await this.translateHelper.getTranslationByKey(
+            'ADD_CERTIFICATE_TYPE_MODAL.ADD_SUCCESS.OK'
+          ),
         });
         return true;
       } catch (error) {
-        console.error('Error adding certificate type:', error);
+        Swal.fire({
+          icon: 'error',
+          title: await this.translateHelper.getTranslationByKey(
+            'ADD_CERTIFICATE_TYPE_MODAL.ADD_ERROR.TITLE'
+          ),
+          text: await this.translateHelper.getTranslationByKey(
+            'ADD_CERTIFICATE_TYPE_MODAL.ADD_ERROR.TEXT'
+          ),
+          confirmButtonText: await this.translateHelper.getTranslationByKey(
+            'ADD_CERTIFICATE_TYPE_MODAL.ADD_ERROR.OK'
+          ),
+        });
         return false;
       }
     }
