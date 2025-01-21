@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, computed } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, computed, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -25,6 +25,7 @@ import { CrewService } from '../../services/crew.service';
 })
 export class DashboardComponent implements AfterViewInit {
   public dataSource = new MatTableDataSource<Crew>([]);
+  private crewSignal = signal<Crew[]>([]);
   public displayedColumns: string[] = [
     'first_name',
     'last_name',
@@ -42,6 +43,7 @@ export class DashboardComponent implements AfterViewInit {
   constructor(public router: Router, private crewService: CrewService) {
     this.crewService.crew$.subscribe((data) => {
       this.dataSource.data = [...data];
+      this.crewSignal.set([...data]);
     });
   }
 
@@ -54,7 +56,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   public totalIncome = computed(() => {
-    const totals = this.dataSource.data.reduce((acc, crew) => {
+    const totals = this.crewSignal().reduce((acc, crew) => {
       if (!acc[crew.currency]) {
         acc[crew.currency] = 0;
       }
