@@ -6,9 +6,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Certificate, Crew } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  imports: [CommonModule, MatTableModule, MatButtonModule, MatIconModule],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    TranslateModule,
+  ],
   selector: 'pages-crew-certificates',
   templateUrl: './certificates.component.html',
   styleUrl: './certificates.component.scss',
