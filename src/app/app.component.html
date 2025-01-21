@@ -38,11 +38,11 @@
     <mat-select
       [(ngModel)]="appLanguage"
       (selectionChange)="translate.use($event.value)"
-      class="inline-block bg-[#1a2942] text-white max-w-44 max-h-10 rounded-lg border border-gray-600/50 shadow-lg flex-shrink"
+      class="inline-block bg-[#1a2942] text-white max-w-44 max-h-10 rounded-lg border border-gray-600/50 shadow-lg flex-shrink [&_.mat-select-arrow-wrapper]:pr-3"
       panelClass="dark-theme-select"
     >
       <mat-select-trigger>
-        <div class="flex items-center gap-3 mx-3 my-1.5">
+        <div class="flex items-center gap-3 px-3 py-2">
           <img
             [src]="
               'https://flagcdn.com/24x18/' +
