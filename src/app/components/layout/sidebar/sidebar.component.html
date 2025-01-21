@@ -7,7 +7,7 @@
         routerLinkActive="underline"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
-        ><mat-icon>home</mat-icon> Dashboard</a
+        ><mat-icon>home</mat-icon> {{ "SIDEBAR.DASHBOARD" | translate }}</a
       >
     </mat-list-item>
     <mat-list-item>
@@ -18,7 +18,7 @@
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
       >
-        <mat-icon>redeem</mat-icon> Certificates</a
+        <mat-icon>redeem</mat-icon> {{ "SIDEBAR.CERTIFICATES" | translate }}</a
       >
     </mat-list-item>
     <mat-list-item>
@@ -28,7 +28,8 @@
         routerLinkActive="underline"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
-        ><mat-icon>format_list_numbered</mat-icon>Certificate Types</a
+        ><mat-icon>format_list_numbered</mat-icon
+        >{{ "SIDEBAR.CERTIFICATE_TYPES" | translate }}</a
       >
     </mat-list-item>
   </mat-list>
