@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import certificates from '../../data/certificates.data';
 import { Certificate } from '../../data/types';
 import { TranslateHelper } from '../modules/translate-helper.module';
+import { CrewService } from './crew.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,10 @@ export class CertificateService {
   );
   public certificates$ = this.certificatesSubject.asObservable();
 
-  constructor(private translateHelper: TranslateHelper) {}
+  constructor(
+    private translateHelper: TranslateHelper,
+    private crewService: CrewService
+  ) {}
 
   get certificates() {
     return this.certificatesSubject.value;
@@ -131,6 +135,19 @@ export class CertificateService {
       );
       this.certificatesSubject.next([...updatedCertificates]);
 
+      // Update certificate in crew members
+      const crews = this.crewService.getCrews();
+      const updatedCrews = crews.map((crew) => ({
+        ...crew,
+        certificates: crew.certificates.map((cert) =>
+          cert.id === id ? updatedCertificate : cert
+        ),
+      }));
+
+      for (const crew of updatedCrews) {
+        await this.crewService.editCrew(crew.slug, crew);
+      }
+
       Swal.fire({
         icon: 'success',
         title: await this.translateHelper.getTranslationByKey(
@@ -189,6 +206,17 @@ export class CertificateService {
             (cert) => cert.id !== id
           );
           this.certificatesSubject.next([...updatedCertificates]);
+
+          // Remove certificate from crew members
+          const crews = this.crewService.getCrews();
+          const updatedCrews = crews.map((crew) => ({
+            ...crew,
+            certificates: crew.certificates.filter((cert) => cert.id !== id),
+          }));
+
+          for (const crew of updatedCrews) {
+            await this.crewService.editCrew(crew.slug, crew);
+          }
 
           Swal.fire({
             icon: 'success',
