@@ -52,24 +52,8 @@ export class CertificateTypeCreateComponent {
         title: formValue.title,
         description: formValue.description,
       });
-
       if (success) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Certificate type created successfully!',
-          timerProgressBar: true,
-          timer: 3000,
-        });
         this.closeModal();
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Failed to create certificate type',
-          timerProgressBar: true,
-          timer: 3000,
-        });
       }
     } else {
       this.formGroup.markAllAsTouched();
