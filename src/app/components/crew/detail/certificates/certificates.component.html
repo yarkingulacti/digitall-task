@@ -12,10 +12,10 @@
       </div>
       <div class="text-right">
         <p class="text-white/60 text-sm mb-2">
-          Type: {{ certificate.type.title }}
+          {{'CREW_DETAIL.CERTIFICATES.CERTIFICATE_TYPE' | translate}}: {{ certificate.type.title }}
         </p>
         <p class="text-white/60 text-sm mb-2">
-          Issue Date: {{ certificate.issue_date | date }}
+          {{'CREW_DETAIL.CERTIFICATES.CERTIFICATE_ISSUE_DATE' | translate}}: {{ certificate.issue_date | date }}
         </p>
         <p
           *ngIf="certificate.expiration_date"
@@ -25,7 +25,7 @@
             'text-emerald-400': !isExpired(certificate.expiration_date)
           }"
         >
-          Expiration Date: {{ certificate.expiration_date | date }}
+          {{'CERTIFICATE_LIST.TABLE_HEADER.EXPIRY_DATE' | translate}}: {{ certificate.expiration_date | date }}
         </p>
       </div>
     </div>

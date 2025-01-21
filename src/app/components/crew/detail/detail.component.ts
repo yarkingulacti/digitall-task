@@ -3,9 +3,10 @@ import { Crew } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   selector: 'components-crew-detail',
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
