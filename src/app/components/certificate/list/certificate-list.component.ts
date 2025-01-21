@@ -60,30 +60,6 @@ export class CertificateListComponent implements AfterViewInit {
   }
 
   onDeleteClick(id: string) {
-    Swal.fire({
-      title: this.translate.instant(
-        'CERTIFICATE_LIST.DELETE_CONFIRMATION.TITLE'
-      ),
-      text: this.translate.instant('CERTIFICATE_LIST.DELETE_CONFIRMATION.TEXT'),
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: this.translate.instant(
-        'CERTIFICATE_LIST.DELETE_CONFIRMATION.SUBMIT'
-      ),
-      cancelButtonText: this.translate.instant(
-        'CERTIFICATE_LIST.DELETE_CONFIRMATION.CANCEL'
-      ),
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.certificateService.deleteCertificate(id);
-        Swal.fire(
-          this.translate.instant('CERTIFICATE_LIST.DELETE_SUCCESS.TITLE'),
-          this.translate.instant('CERTIFICATE_LIST.DELETE_SUCCESS.TEXT'),
-          'success'
-        );
-      }
-    });
+    this.certificateService.deleteCertificate(id);
   }
 }
