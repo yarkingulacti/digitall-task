@@ -20,6 +20,7 @@ import { Certificate, Crew, Title } from '../../../../data/types';
 import { CrewService } from '../../../services/crew.service';
 import { CertificateService } from '../../../services/certificate.service';
 import { nationalities } from '../../../../data/nationalities.data';
+import { ComponentsCrewCrudNationalitiesComponent } from '../../../components/crew/create/create.component';
 
 @Component({
   imports: [
@@ -32,10 +33,12 @@ import { nationalities } from '../../../../data/nationalities.data';
     CommonModule,
     MatDialogModule,
     TranslateModule,
+    ComponentsCrewCrudNationalitiesComponent,
   ],
   selector: 'pages-crew-edit',
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss',
+  standalone: true,
 })
 export class CrewEditComponent implements OnInit {
   formGroup: FormGroup;

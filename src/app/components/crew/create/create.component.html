@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" class="w-full">
+ <mat-label>{{ "ADD_CREW_MODAL.NATIONALITY" | translate }}</mat-label>
+ <mat-select formControlName="nationality">
+  <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
+   {{ nationality }}
+  </mat-option>
+ </mat-select>
+ <mat-error *ngIf="formGroup.get('nationality')?.hasError('required')">
+  {{ "ADD_CREW_MODAL.NATIONALITY.REQUIRED" | translate }}
+ </mat-error>
+</mat-form-field>

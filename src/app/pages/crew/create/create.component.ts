@@ -21,22 +21,25 @@ import titles from '../../../../data/titles.data';
 import { CrewService } from '../../../services/crew.service';
 import { CertificateService } from '../../../services/certificate.service';
 import { nationalities } from '../../../../data/nationalities.data';
+import { ComponentsCrewCrudNationalitiesComponent } from '../../../components/crew/create/create.component';
 
 @Component({
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
     MatSelectModule,
+    MatInputModule,
     MatButtonModule,
     MatIconModule,
     CommonModule,
     MatDialogModule,
     TranslateModule,
+    ComponentsCrewCrudNationalitiesComponent,
   ],
   selector: 'pages-crew-create',
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss',
+  standalone: true,
 })
 export class CrewCreateComponent implements OnInit {
   formGroup: FormGroup;
